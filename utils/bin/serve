@@ -1,0 +1,36 @@
+#!/bin/bash
+# serve [DIR] [PORT] - serve current or DIR on PORT or 8088
+
+dir=$(realpath ${1:-.})
+port=${2:-8088}
+
+exec nginx -p /tmp/.serve.$$ -c /dev/stdin <<EOF
+worker_processes 1;
+error_log "/dev/stdout";
+daemon off;
+pid "/tmp/.serve-pid.$$";
+events {
+  worker_connections 1024;
+}
+http {
+  access_log "/dev/stdout";
+  client_body_temp_path "/tmp/.serve.$$";
+  uwsgi_cache off;
+  uwsgi_temp_path "/tmp/.serve.$$";
+  fastcgi_cache off;
+  fastcgi_temp_path "/tmp/.serve.$$";
+  proxy_temp_path "/tmp/.serve.$$";
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+  server {
+    listen $port;
+    sendfile on;
+    gzip on;
+    location / {
+      root "$dir";
+      autoindex on;
+      index index.html index.htm;
+    }
+  }
+}
+EOF

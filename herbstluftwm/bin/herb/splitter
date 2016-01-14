@@ -1,0 +1,55 @@
+#!/bin/bash
+
+hc=`which herbstclient`
+
+function spawnat() {
+    (
+        local id="$2-$BASHPID"
+        herbstclient rule once instance="$id" maxage=10 index="$1"
+        shift
+        local cmd="$1"
+        shift
+        exec "$cmd" -name "$id" "$@"
+    ) &
+}
+
+cmd=${2-urxvtc}
+
+case "$1" in
+    "two")
+        $hc split h .5
+        spawnat 00 $cmd
+        spawnat 10 $cmd
+        ;;
+    "trip")
+        $hc split v .8
+        $hc split h .5
+        spawnat 00 $cmd
+        spawnat 01 $cmd
+        spawnat 10 $cmd
+        ;;
+    "three")
+        $hc split h .7
+        $hc focus r
+        $hc split v .5
+        spawnat 00 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
+        ;;
+    "four")
+        $hc split h .5
+        $hc split v .5
+        $hc focus r
+        $hc split v .5
+        spawnat 00 $cmd
+        spawnat 01 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
+        ;;
+    "five")
+        $hc split h .5
+        $hc split v .2
+        $hc focus d
+        $hc split v .2
+        ;;
+esac

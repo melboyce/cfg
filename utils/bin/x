@@ -1,0 +1,2 @@
+#!/bin/bash
+startx >| /home/mel/.x.log 2>&1

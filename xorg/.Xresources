@@ -1,0 +1,93 @@
+!-----------------------------------------------------------------------------
+! Xresources/Xdefaults
+!
+! mel@thestack.co
+!
+! vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+!-----------------------------------------------------------------------------
+
+
+! fonts
+Xft.antialias:          1
+Xft.autohint:           1
+Xft.dpi:                91
+Xft.hinting:            1
+Xft.hintstyle:          hintslight
+Xft.lcdfilter:          lcddefault
+Xft.rgba:               rgb
+
+
+! terminals
+xterm*termName:         xterm-256color
+xterm*faceName:         terminus:pixelsize=12
+xterm*utf8:             2
+xterm*saveLines:        1024
+xterm*loginShell:       true
+xterm*dynamicColors:    true
+
+URxvt*termName:         rxvt-unicode-256color
+URxvt*loginShell:       true
+URxvt*jumpScroll:       true
+URxvt*transparent:      true
+URxvt*shading:          7
+URxvt.depth:            32
+URxvt.background:       rgb:0000/0000/0000
+URxvt*fading:           0
+URxvt*blurRadius:       0
+URxvt.scrollBar:        off
+URxvt.font:             xft:PragmataPro:size=10:style=Regular
+URxvt.boldFont:         xft:PragmataPro:size=10:style=Regular
+URxvt.letterSpace:      -2
+URxvt.saveLines:        2048
+URxvt*visualBell:       false
+URxvt*urgentOnBell:     true
+URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+URxvt.colorUL:          #24d
+URxvt.iso14755:         false
+
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+URxvt.keysym.M-c:       perl:clipboard:copy
+URxvt.keysym.M-v:       perl:clipboard:paste
+
+
+!-- colors
+URxvt*background:            #000
+URxvt*foreground:            #8aa
+URxvt*fadeColor:             #002b36
+URxvt*cursorColor:           #93a1a1
+URxvt*pointerColorBackground:#586e75
+URxvt*pointerColorForeground:#93a1a1
+
+!! black
+*color0:  #011
+*color8:  #345
+
+!! red
+*color1:  #a22
+*color9:  #e22
+
+!! green
+*color2:  #160
+*color10: #7a0
+
+!! yellow
+*color3:  #950
+*color11: #da0
+
+!! blue
+*color4:  #137
+*color12: #24d
+
+!! magenta
+*color5:  #925
+*color13: #d28
+
+!! cyan
+*color6:  #165
+*color14: #2d9
+
+!! white
+*color7:  #789
+*color15: #eef

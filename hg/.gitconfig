@@ -1,0 +1,7 @@
+[user]
+	email = mel@thestack.co
+	name = Mel Boyce
+[core]
+	excludesfile = ~/.gitignore
+[push]
+	default = simple

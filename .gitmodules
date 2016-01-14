@@ -1,0 +1,21 @@
+[submodule "zsh/.zsh/zsh-syntax-highlighting"]
+	path = zsh/.zsh/zsh-syntax-highlighting
+	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "lightline.vim"]
+	path = lightline.vim
+	url = git://github.com/itchyny/lightline.vim.git
+[submodule "nvim/.config/nvim/autoload/plugged/lightline.vim"]
+	path = nvim/.config/nvim/autoload/plugged/lightline.vim
+	url = git://github.com/itchyny/lightline.vim.git
+[submodule "nvim/.config/nvim/autoload/plugged/neomake"]
+	path = nvim/.config/nvim/autoload/plugged/neomake
+	url = git://github.com/benekastah/neomake.git
+[submodule "nvim/.config/nvim/autoload/plugged/salt-vim"]
+	path = nvim/.config/nvim/autoload/plugged/salt-vim
+	url = git://github.com/saltstack/salt-vim.git
+[submodule "nvim/.config/nvim/autoload/plugged/vim-commentary"]
+	path = nvim/.config/nvim/autoload/plugged/vim-commentary
+	url = git://github.com/tpope/vim-commentary
+[submodule "nvim/.config/nvim/autoload/plugged/vim-surround"]
+	path = nvim/.config/nvim/autoload/plugged/vim-surround
+	url = git://github.com/tpope/vim-surround

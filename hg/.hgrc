@@ -1,0 +1,19 @@
+[ui]
+username = Mel Boyce <mel@thestack.co>
+verbose = True
+
+[trusted]
+users = *
+groups = *
+
+[extensions]
+color =
+fetch =
+graphlog =
+progress =
+rebase =
+mq =
+purge =
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt

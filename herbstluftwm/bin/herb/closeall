@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while (( $(herbstclient layout|wc -l) > 1 )); do
+    herbstclient close_or_remove
+done
+herbstclient close_or_remove
