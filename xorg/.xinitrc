@@ -31,14 +31,12 @@ rofi -key-run F12 -font "PragmataPro 8" -fg "#505050" -bg "#000000" -hlfg "#ffb9
 
 
 # xinput crap
-# pointer_id=`xinput list | egrep 'slave.+pointer' | grep -vi 'xtest' | cut -d= -f2 | awk '{ print $1 }'`
-# ns_prop_id=`xinput list-props 12 | grep -i natural | grep -vi default | cut -d\( -f2 | cut -d\) -f1`
-# xinput set-prop $pointer_id $ns_prop_id 1
-xinput | egrep 'slave\s+pointer' | grep -vi xtest | while read line; do
-  devid="`echo ${line##*=}|cut -f1`"
-  propid=`xinput list-props $devid | grep 'libinput Natural Scrolling Enabled (' | cut -d\( -f2 | cut -d\) -f1`
-  [[ "$propid" != "" ]] && xinput set-prop $devid $propid 1
-done
+# XXX moved to script in ~/bin and executes from herbstluft's autostart
+# xinput | egrep 'slave\s+pointer' | grep -vi xtest | while read line; do
+#   devid="`echo ${line##*=}|cut -f1`"
+#   propid=`xinput list-props $devid | grep 'libinput Natural Scrolling Enabled (' | cut -d\( -f2 | cut -d\) -f1`
+#   [[ "$propid" != "" ]] && xinput set-prop $devid $propid 1
+# done
 
 
 # misc
