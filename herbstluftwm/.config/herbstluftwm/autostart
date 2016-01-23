@@ -12,7 +12,6 @@ resizestep=0.05
 term=urxvtc
 
 hc emit_hook reload
-hc detect_monitors
 [[ -f ~/.fehbg ]] && source ~/.fehbg
 
 # keybindings
@@ -32,6 +31,8 @@ for i in ${!tagnames[@]}; do
 done
 hc keybind $mod-0       use_index 9
 hc keybind $mod-Shift-0 move_index 9
+
+hc detect_monitors
 
 # core
 hc keybind $mod-Shift-q quit
