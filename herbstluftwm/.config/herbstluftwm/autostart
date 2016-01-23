@@ -139,4 +139,4 @@ done
 
 # local extras
 lcfg=~/.config/herbstluftwm/`hostname`
-[[ -f $lcfg ]] && source $lcfg
+[[ -f $lcfg ]] && $lcfg $mod
