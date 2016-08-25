@@ -80,9 +80,10 @@ set undofile
 
 " filetype specifics
 autocmd filetype HTML       setlocal ts=2 sts=2 sw=2 et
-autocmd filetype javascript setlocal ts=2 sts=2 sw=2 et
 autocmd filetype go         setlocal ts=4 sts=4 sw=4 noet
+autocmd filetype javascript setlocal ts=2 sts=2 sw=2 et
 autocmd filetype python     setlocal ts=4 sts=4 sw=4 et
+autocmd filetype yaml       setlocal ts=2 sts=2 sw=2 et
 autocmd bufread,bufnewfile /etc/nginx/*    set ft=nginx
 autocmd bufread,bufnewfile /etc/haproxy/*  set ft=haproxy
 
