@@ -125,6 +125,20 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
+# gimp
+hc add gimp
+hc load gimp '
+(split horizontal:0.850000:0
+(split horizontal:0.200000:1
+(clients vertical:0)
+(clients grid:0))
+(clients vertical:0))
+'
+hc rule class=Gimp tag=gimp index=01 pseudotile=on
+hc rule class=Gimp windowrole~'gimp-(image-window|toolbox|dock)' pseudotile=off
+hc rule class=Gimp windowrole=gimp-toolbox focus=off index=00
+hc rule class=Gimp windowrole=gimp-dock focus=off index=1
+
 
 # finish up
 hc unlock
