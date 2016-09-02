@@ -10,13 +10,14 @@ hc() { herbstclient "$@"; }
 mod=Mod4
 resizestep=0.05
 term=urxvtc
+launcher1="rofi -show run"
+launcher2="rofi -show ssh"
 
 hc emit_hook reload
 [[ -f ~/.fehbg ]] && source ~/.fehbg
 
 # keybindings
 hc keyunbind --all
-hc keybind Mod4-l spawn urxvt
 
 # tags
 tagnames=(t1 t2 t3 t4 t5 t6 m1 m2 m3 www)
@@ -79,6 +80,8 @@ hc keybind $mod-c       cycle
 hc keybind $mod-Return spawn $term
 hc keybind $mod-Shift-Return spawn urxvtc -sh 40
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
+hc keybind F12 spawn $launcher1
+hc keybind Shift-F12 spawn $launcher2
 
 # chains
 hc keybind $mod-Shift-Left  chain , split left 0.5 , focus left , spawn $term

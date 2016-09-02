@@ -15,9 +15,12 @@ xset +fp $HOME/.fonts
 xset fp rehash
 
 
-# x config
+# xset
 xset r rate 200 50  # keyboard rate
 xset -b             # disable BEEP
+
+
+# x config
 xmodmap $HOME/.Xmodmap
 xbindkeys
 xrdb -load $HOME/.Xresources
@@ -27,16 +30,6 @@ xrdb -load $HOME/.Xresources
 numlockx &
 xautolock -time 10 -locker slock &
 urxvtd -o -f
-rofi -key-run F12 -font "PragmataPro 8" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -location 0 -separator-style solid -width 20 -lines 5 -hide-scrollbar &
-
-
-# xinput crap
-# XXX moved to script in ~/bin and executes from herbstluft's autostart
-# xinput | egrep 'slave\s+pointer' | grep -vi xtest | while read line; do
-#   devid="`echo ${line##*=}|cut -f1`"
-#   propid=`xinput list-props $devid | grep 'libinput Natural Scrolling Enabled (' | cut -d\( -f2 | cut -d\) -f1`
-#   [[ "$propid" != "" ]] && xinput set-prop $devid $propid 1
-# done
 
 
 # misc

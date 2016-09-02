@@ -7,7 +7,7 @@
 !-----------------------------------------------------------------------------
 
 
-! fonts
+!-- fonts
 Xft.antialias:          1
 Xft.autohint:           1
 Xft.dpi:                91
@@ -17,7 +17,7 @@ Xft.lcdfilter:          lcddefault
 Xft.rgba:               rgb
 
 
-! terminals
+!-- terminals
 xterm*termName:         xterm-256color
 xterm*faceName:         terminus:pixelsize=12
 xterm*utf8:             2
@@ -50,6 +50,21 @@ URxvt.keysym.M-Escape:  perl:keyboard-select:activate
 URxvt.keysym.M-s:       perl:keyboard-select:search
 URxvt.keysym.M-c:       perl:clipboard:copy
 URxvt.keysym.M-v:       perl:clipboard:paste
+
+
+!-- rofi
+rofi.color-normal:    #001010, #e0e0f0, #102020, #103070, #d0a007
+rofi.color-urgent:    #001010, #e0e0f0, #102020, #103070, #d0a007
+rofi.color-active:    #001010, #e0e0f0, #102020, #103070, #d0a007
+rofi.modi:            run,ssh
+rofi.font:            PragmataPro 10
+rofi.bw:              0
+rofi.line-margin:     0
+rofi.hide-scrollbar:  1
+rofi.separator-style: none
+rofi.scrollbar-width: 0
+rofi.padding:         1
+rofi.terminal:        urxvtc
 
 
 !-- colors
