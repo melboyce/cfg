@@ -1,6 +1,4 @@
 # zshrc - prompt
-#
-# mel@thestack.co
 
 # colors
 rs="%{%k%f%}"
@@ -12,7 +10,7 @@ exitcolor="%{%F{196}%}"  # fg color for exit code if non-zero
 
 case `hostname` in
     # good/safe hosts
-    eden|winterfell|jen)
+    eden|winterfell|jen|anvil)
         hostcolor="%{%K{000}%F{116}%}";;
 
     # hosts with public ips

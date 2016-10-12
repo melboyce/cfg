@@ -6,12 +6,13 @@
 " plugins
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+Plug 'benekastah/neomake'
+Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go'
 Plug 'itchyny/lightline.vim'
 Plug 'saltstack/salt-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'benekastah/neomake'
 
 call plug#end()
 

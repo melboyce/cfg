@@ -37,7 +37,7 @@ URxvt*blurRadius:       0
 URxvt.scrollBar:        off
 URxvt.font:             xft:PragmataPro:size=10:style=Regular
 URxvt.boldFont:         xft:PragmataPro:size=10:style=Regular
-URxvt.letterSpace:      -2
+URxvt.letterSpace:      0
 URxvt.saveLines:        2048
 URxvt*visualBell:       false
 URxvt*urgentOnBell:     true

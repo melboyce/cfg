@@ -9,7 +9,6 @@ fi
 
 
 # fonts
-xset +fp /usr/share/fonts/local
 xset +fp /usr/share/fonts/artwiz-fonts
 xset +fp $HOME/.fonts
 xset fp rehash
@@ -36,4 +35,4 @@ urxvtd -o -f
 mkdir -p $HOME/.cache/dmenu_run 2>/dev/null
 
 
-dbus-launch --exit-with-session herbstluftwm
+exec herbstluftwm
