@@ -1,2 +1,2 @@
 #!/bin/bash
-startx >| /home/mel/.x.log 2>&1
+startx 2>&1 | moreutils_ts "%FT%T%Z" | tee /home/mel/.x.log
