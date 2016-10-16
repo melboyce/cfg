@@ -21,7 +21,6 @@ xrdb -load $HOME/.Xresources
 # daemons etc
 numlockx &
 xautolock -time 10 -locker slock &
-export RXVT_SOCKET=~/urxvtd.sock
 urxvtd -o &
 
 
