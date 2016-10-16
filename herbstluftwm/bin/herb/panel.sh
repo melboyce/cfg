@@ -68,8 +68,6 @@ update_pad $((height + padding_top + padding_bottom))
                 ;;
         esac
 
-        echo -n "%{l}%{A4:next:}%{A5:prev:}"
-
         for i in "${tags[@]}"; do
             occupied=true
             focused=false
@@ -97,17 +95,16 @@ update_pad $((height + padding_top + padding_bottom))
             $occupied && output+="%{F-}" || output+="%{F#707070}"
             $urgent   && output+="%{B#ee3030}%{-o}"
             $focused  && output+="%{F#eeeeee}%{U#9fbc00}" || output+="%{U#454545}"
-            output+="%{A1:use_${i:1}:} ${i:1} %{A}"
             echo -n "$output"
         done
-        echo -n "%{A}%{A}%{F-}%{B-}%{-o}"
+        echo -n "%{F-}%{B-}%{-o}"
         [[ -n "$windowtitle" ]] \
             && echo -n "%{c}%{F#707070}${windowtitle:0:50}" \
             || echo -n "%{c} "
         echo -n "%{r}%{-o}%{F#707070} $date %{F#f0f0f0}$hhmm "
         echo "%{F-}%{B-}%{-o}%{-u}"
     done
-} | ~/bin/lemonbar -d \
+} | /usr/bin/lemonbar -d \
     -g "`printf '%dx%d%+d%+d' $width $height $x $y`" \
     -u 2 -f "$font" -B "#121212" | while read line; do
         case "$line" in
