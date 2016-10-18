@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 set -f
 
@@ -10,6 +10,7 @@ padding_left=0
 padding_right=$padding_left
 bottom=0
 font="-*-smoothansi-medium-*-*-*-13-*-*-*-*-*-*-*"
+font="-*-smoothansi-*-*-*-*-*-*-*-*-*-*-*-*"
 
 geometry=( `herbstclient monitor_rect $monitor` )
 x=${geometry[0]}
@@ -20,6 +21,8 @@ width="${geometry[2]}"
 x=$((x + padding_left))
 width=$((width - padding_left - padding_right))
 y=$((y + padding_top))
+
+xgeom="${width}x${height}+$x+$y"
 
 function uniq_linebuffered() {
     exec awk '$0 != l { print ; l=$0 ; fflush(); }' "$@"
@@ -68,6 +71,7 @@ update_pad $((height + padding_top + padding_bottom))
                 ;;
         esac
 
+	output=""
         for i in "${tags[@]}"; do
             occupied=true
             focused=false
@@ -89,27 +93,21 @@ update_pad $((height + padding_top + padding_bottom))
                 ':') visible=false;;
             esac
 
-            output=""
-            $here     && output+="%{B#303030}" || output+="%{B-}"
-            $visible  && output+="%{+o}" || output+="%{-o}"
-            $occupied && output+="%{F-}" || output+="%{F#707070}"
-            $urgent   && output+="%{B#ee3030}%{-o}"
-            $focused  && output+="%{F#eeeeee}%{U#9fbc00}" || output+="%{U#454545}"
-            echo -n "$output"
+	    tagname="${i:1}"
+
+	    $here     && output+="^bg(#333)" || output+="^bg()"
+	    #$visible  && output+="^fg()" || output+=""
+	    $occupied && output+="^fg()" || output+="^fg(#555)"
+	    $urgent   && output+="^bg(#e33)"
+	    $focused  && output+="^bg(yellow)^fg(#111)" || output+=""
+            output+=" $tagname "
         done
-        echo -n "%{F-}%{B-}%{-o}"
-        [[ -n "$windowtitle" ]] \
-            && echo -n "%{c}%{F#707070}${windowtitle:0:50}" \
-            || echo -n "%{c} "
-        echo -n "%{r}%{-o}%{F#707070} $date %{F#f0f0f0}$hhmm "
-        echo "%{F-}%{B-}%{-o}%{-u}"
+	output+="^fg()^bg()"
+
+	dtw=`textwidth "$font" "$date $hhmm"`
+	output+="^pa($(( $width - $dtw ))^fg(#777)$date ^fg(yellow)$hhmm "
+
+	echo $output
     done
-} | /usr/bin/lemonbar -d \
-    -g "`printf '%dx%d%+d%+d' $width $height $x $y`" \
-    -u 2 -f "$font" -B "#121212" | while read line; do
-        case "$line" in
-            use_*) herbstclient chain , focus_monitor "$monitor" , use "${line#use_}";;
-            next)  herbstclient chain , focus_monitor "$monitor" , use_index +1 --skip-visible;;
-            prev)  herbstclient chain , focus_monitor "$monitor" , use_index -1 --skip-visible;;
-        esac
-    done
+#} | $HOME/bin/lemonbar -d -g "`printf '%dx%d%+d%+d' $width $height $x $y`" -u 2 -f "$font" -B "#121212"
+} | dzen2 -xs $(( $monitor + 1 )) -h $height -w $width -fn $font
