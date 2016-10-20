@@ -67,15 +67,15 @@ rofi.terminal:        urxvtc
 !-- colors
 !! various
 *background:            #161720
-*foreground:            #90959b
+*foreground:            #d7d0d7
 *fadeColor:             #000000
 *cursorColor:           #93a1a1
 *pointerColorBackground:#586e75
 *pointerColorForeground:#93a1a1
 
 !! black
-*color0:  #202027
-*color8:  #000005
+*color0:  #161720
+*color8:  #303037
 
 !! red
 *color1:  #a33
@@ -83,7 +83,7 @@ rofi.terminal:        urxvtc
 
 !! green
 *color2:  #252
-*color10: #7a0
+*color10: #8a3
 
 !! yellow
 *color3:  #950
@@ -94,12 +94,12 @@ rofi.terminal:        urxvtc
 *color12: #44f
 
 !! magenta
-*color5:  #93a
-*color13: #d4e
+*color5:  #95a
+*color13: #c7d
 
 !! cyan
-*color6:  #165
-*color14: #2b9
+*color6:  #276
+*color14: #4ba
 
 !! white
 *color7:  #667
