@@ -1,8 +1,6 @@
 !-----------------------------------------------------------------------------
 ! Xresources/Xdefaults
 !
-! mel@thestack.co
-!
 ! vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
 !-----------------------------------------------------------------------------
 
@@ -28,10 +26,9 @@ xterm*dynamicColors:    true
 URxvt*termName:         rxvt-unicode-256color
 URxvt*loginShell:       true
 URxvt*jumpScroll:       true
-URxvt*transparent:      true
+URxvt*transparent:      false
 URxvt*shading:          7
-URxvt.depth:            32
-URxvt.background:       rgb:0000/0000/0000
+URxvt.depth:            24
 URxvt*fading:           0
 URxvt*blurRadius:       0
 URxvt.scrollBar:        off
@@ -68,23 +65,24 @@ rofi.terminal:        urxvtc
 
 
 !-- colors
-URxvt*background:            #000
-URxvt*foreground:            #8aa
-URxvt*fadeColor:             #002b36
-URxvt*cursorColor:           #93a1a1
-URxvt*pointerColorBackground:#586e75
-URxvt*pointerColorForeground:#93a1a1
+!! various
+*background:            #161720
+*foreground:            #90959b
+*fadeColor:             #000000
+*cursorColor:           #93a1a1
+*pointerColorBackground:#586e75
+*pointerColorForeground:#93a1a1
 
 !! black
-*color0:  #011
-*color8:  #345
+*color0:  #202027
+*color8:  #000005
 
 !! red
-*color1:  #a22
-*color9:  #e22
+*color1:  #a33
+*color9:  #e44
 
 !! green
-*color2:  #160
+*color2:  #252
 *color10: #7a0
 
 !! yellow
@@ -92,17 +90,17 @@ URxvt*pointerColorForeground:#93a1a1
 *color11: #da0
 
 !! blue
-*color4:  #137
-*color12: #24d
+*color4:  #33a
+*color12: #44f
 
 !! magenta
-*color5:  #925
-*color13: #d28
+*color5:  #93a
+*color13: #d4e
 
 !! cyan
 *color6:  #165
-*color14: #2d9
+*color14: #2b9
 
 !! white
-*color7:  #789
+*color7:  #667
 *color15: #eef
