@@ -13,6 +13,7 @@ alias killall="pkill"  # just in case i'm on a "real" unix
 alias l.="ls -d .[^.]*"
 alias ll="ls -la"
 alias ls="ls --color=auto --group-directories-first --classify --time-style='+%Y-%m-%d %H:%M' --human-readable -X"
+alias lt="tree -pugsh --dirsfirst -L 1"
 alias mt="multitail --follow-all"
 alias psa="ps --forest -e --sort uid"
 alias psc="ps xawf -eo pid,user,cgroup,args"
