@@ -1,8 +1,6 @@
 # zshrc - completions
 #
 # note: add 'HashKnownHosts no' to .ssh/config
-#
-# mel@thestack.co
 
 # load completions
 autoload -U compinit
@@ -24,6 +22,7 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:descriptions' format "- %d -"
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*:man:*' menu yes select
 zstyle ':completion:*:default' list-colors 'di=1;34'
 
 zstyle ':completion:*:*:*:*:processes' force-list always
@@ -36,6 +35,3 @@ zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#) #([a-z]#)*=
 local knownhosts
 knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
-
-# aws
-(( $+commands[aws_zsh_completer.sh] )) && source =aws_zsh_completer.sh

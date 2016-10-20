@@ -8,7 +8,7 @@ mkdir -p $TMP
 export BROWSER="/usr/bin/qutebrowser"
 export EDITOR="nvim"
 export GREP_COLOR='31'
-export MANPATH="$MANPATH:$HOME/man"
+export MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/man"
 export MOST_EDITOR="nvim %s +%d"
 export PAGER=most
 export PATH="$PATH:$HOME/bin"
