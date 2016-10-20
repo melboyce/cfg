@@ -1,6 +1,7 @@
 # zshrc - aliases
 
 # SYSTEM ADMINISTRATION
+# misc
 alias dfl="df -hl --exclude tmpfs --exclude devtmpfs --total"
 alias dh="dirs -v"
 alias dt="tree -CFd"
@@ -25,8 +26,10 @@ alias tf="tail -f"
 alias tree="tree -CF"
 alias w="wget"
 alias watch="watch --color"
-# distro-specific
+
+# optionals
 [[ -x /usr/bin/xstow ]] && alias stow="xstow"
+
 
 
 # DISTRIBUTIONS
