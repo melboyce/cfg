@@ -1,8 +1,7 @@
 # zshrc - hashdirs
-#
-# mel@thestack.co
 
 # misc.
+hash -d voidreop="/srv/voidlinux"
 hash -d archrepo="/srv/archlinux"
 
 # salt

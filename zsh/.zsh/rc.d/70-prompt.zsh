@@ -9,24 +9,16 @@ sepcolor="%{%F{235}%}"   # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"  # fg color for exit code if non-zero
 
 case `hostname` in
-    # good/safe hosts
-    eden|winterfell|jen|anvil)
-        hostcolor="%{%K{000}%F{116}%}";;
+    # workstations
+    winterfell|anvil)
+        hostcolor="%{%F{116}%}";;
 
     # hosts with public ips
     *ftp0?lx|*-bastion)
         hostcolor="%{%K{088}%F{231}%}";;
 
-    # application nodes
-    *web??lx|skulls|chuckles|flattop|hotshot|hiccup|blindspot)
-        hostcolor="%{%K{018}%F{178}%}";;
-
-    # topologically brittle hosts (spf etc)
-    *hlb??lx|gumball|headcase|snaps|snitch|kingston|chopper)
-        hostcolor="%{%K{196}%F{000}%}";;
-
     *)
-        hostcolor="%{%K{130}%F{215}%}";;
+        hostcolor="%{%F{208}%}";;
 esac
 
 

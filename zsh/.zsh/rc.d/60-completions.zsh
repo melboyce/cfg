@@ -5,7 +5,7 @@
 # load completions
 autoload -U compinit
 zmodload zsh/complist
-compinit -d $CACHEDIR/zcompdump
+compinit -d $cachedir/zcompdump
 
 _force_rehash() {
   (( CURRENT == 1 )) && rehash
@@ -14,7 +14,7 @@ _force_rehash() {
 
 zstyle ':completion:::::' completer _force_rehash _complete
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
-zstyle ':completion:*' cache-path $CACHEDIR
+zstyle ':completion:*' cache-path $cachedir
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' force-list always
 zstyle ':completion:*:corrections' format "- %d - (errors %e})"

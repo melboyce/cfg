@@ -1,6 +1,4 @@
 # zshrc - options
-#
-# mel@thestack.co
 
 # changing directories
 setopt auto_pushd               # cd pushes to dir stack
@@ -25,7 +23,7 @@ setopt nonomatch                # bash-style no glob match behaviour (supress no
 # history
 setopt extended_history         # saves timestamps and runtime info
 setopt hist_allow_clobber       # > and >> become >! and >>! in hist
-setopt hist_expire_dups_first   # purge duplicates first
+# setopt hist_expire_dups_first   # purge duplicates first
 # setopt hist_fcntl_lock          # use fcntl for locking the history file (as opposed to ad-hoc locking)
 setopt hist_ignore_all_dups     # unique history items only
 setopt hist_ignore_space        # don't add lines that start with a space

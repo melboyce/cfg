@@ -1,6 +1,4 @@
 # zshrc - modules
-#
-# mel@thestack.co
 
 # colors
 autoload -U colors zsh/terminfo
@@ -21,6 +19,7 @@ autoload -U select-word-style
 select-word-style bash
 
 # add strftime builtin
+# strftime format epochtime
 zmodload zsh/datetime
 
 # run-help: esc+h => in-line man page

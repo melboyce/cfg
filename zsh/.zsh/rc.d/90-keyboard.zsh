@@ -1,6 +1,4 @@
 # zshrc - keyboard
-#
-# mel@thestack.co
 
 autoload zkbd
 typeset -g -A key
