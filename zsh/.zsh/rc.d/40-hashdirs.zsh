@@ -1,7 +1,7 @@
 # zshrc - hashdirs
 
 # void package repo
-hash -d vrepo="$HOME/r/void-packages"
+hash -d rvp="$HOME/r/void-packages"
 
 # salt
 hash -d salt="/srv/salt"
