@@ -80,8 +80,8 @@ hc keybind $mod-c       cycle
 hc keybind $mod-Return spawn $term
 hc keybind $mod-Shift-Return spawn urxvtc -tr -sh 30
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
-hc keybind F12 spawn $launcher1
-hc keybind Shift-F12 spawn $launcher2
+hc keybind $mod-F12 spawn $launcher1
+hc keybind $mod-Shift-F12 spawn $launcher2
 
 # chains
 hc keybind $mod-Shift-Left  chain , split left 0.5 , focus left , spawn $term
