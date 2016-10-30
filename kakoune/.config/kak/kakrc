@@ -14,14 +14,14 @@ face value      rgb:a0a030
 
 # colors - markup
 face block  magenta
-face bold   default,rgb:000000
+face bold   rgb:e0a080
 face bullet red
 face header rgb:3080a0
 face italic rgb:20a0a0+i
 face link   cyan
 face list   rgb:709070
 face mono   yellow
-face title  red,white
+face title  rgb:e0a030,rgb:000000
 
 # colors - faces
 face BufferPadding      default
