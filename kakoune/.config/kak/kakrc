@@ -1,27 +1,27 @@
 # kakrc
 
 # colors - code
-face value      rgb:a0a030
-face type       rgb:d04030
-face identifier rgb:3080a0
-face string     rgb:a08030
-face error      rgb:e04040,rgb:000000
-face keyword    rgb:80d030
-face operator   rgb:a03080
 face attribute  rgb:30a080
 face comment    rgb:707090
+face error      rgb:e04040,rgb:000000
+face identifier rgb:3080a0
+face keyword    rgb:80d030
 face meta       rgb:905020
+face operator   rgb:a03080
+face string     rgb:a08030
+face type       rgb:d04030
+face value      rgb:a0a030
 
 # colors - markup
-face title  red,white
-face header rgb:3080a0
-face bold   default,rgb:000000
-face italic rgb:20a0a0
-face mono   yellow
 face block  magenta
-face link   cyan
+face bold   default,rgb:000000
 face bullet red
+face header rgb:3080a0
+face italic rgb:20a0a0+i
+face link   cyan
 face list   rgb:709070
+face mono   yellow
+face title  red,white
 
 # colors - faces
 face BufferPadding      default
@@ -31,25 +31,47 @@ face Information        rgb:aaaa22,rgb:202530
 face LineNumberAbsolute rgb:20bb77,rgb:000000
 face LineNumberCursor   rgb:20b0d0,rgb:203050
 face LineNumbers        rgb:707090
-face MatchingChar		rgb:000000,rgb:3080a0
+face MatchingChar       rgb:000000,rgb:3080a0
 face MenuBackground     rgb:707580,rgb:202530
 face MenuForeground     rgb:a7aa30,rgb:272c47
 face PrimaryCursor      rgb:502020,rgb:80b030
 face PrimarySelection   rgb:d0a040,rgb:203050
 face Prompt             rgb:10f0c0,rgb:000000
+face Search             rgb:a03080,rgb:d0a0c0
 face SecondaryCursor    rgb:401040,rgb:d050a0
 face SecondarySelection rgb:d0a040,rgb:203050
 face StatusCursor       yellow,rgb:202530
 face StatusLine         rgb:808088,rgb:000000
 face Whitespace         rgb:404040
 
+# ui_options
 set global ui_options ncurses_enable_mouse=false:ncurses_assistant=cat
 
-set global tabstop 4
+# global options
+set global autoreload ask
 set global indentwidth 4
 set global scrolloff 1,5
+set global tabstop 4
 
+# bindings - user
+map global user c ':comment-line<ret>'
+map global user h ':bp<ret>'
+map global user l ':bn<ret>'
+
+map global user b '|bc<ret>:echo -color LineNumberAbsolute [sel] | bc<ret>'
+map global user f '|fmt -w 80<ret>:echo -color LineNumberAbsolute [sel] | fmt -w 80<ret>'
+map global user s '|sort -bn<ret>:echo -color LineNumberAbsolute [sel] | sort -bn<ret>'
+
+map global user p '!xsel<ret>:echo -color LineNumberAbsolute [sel] += xsel<ret>'
+
+# hooks
 hook global WinCreate .* %{
     addhl number_lines -relative -hlcursor -separator " | "
     addhl show_matching
+}
+hook global NormalKey [/?*nN]|<a-[/?*nN]> %{
+    addhl dynregex '%reg{/}' 0:Search
+}
+hook global NormalKey <esc> %{
+    rmhl dynregex_%reg{<slash>}
 }
