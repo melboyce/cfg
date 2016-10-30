@@ -42,11 +42,11 @@ URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
 URxvt.colorUL:          #24d
 URxvt.iso14755:         false
 
-URxvt.keysym.M-u:       perl:url-select:select_next
-URxvt.keysym.M-Escape:  perl:keyboard-select:activate
-URxvt.keysym.M-s:       perl:keyboard-select:search
-URxvt.keysym.M-c:       perl:clipboard:copy
-URxvt.keysym.M-v:       perl:clipboard:paste
+!URxvt.keysym.M-u:       perl:url-select:select_next
+!URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+!URxvt.keysym.M-s:       perl:keyboard-select:search
+!URxvt.keysym.M-c:       perl:clipboard:copy
+!URxvt.keysym.M-v:       perl:clipboard:paste
 
 
 !-- rofi
