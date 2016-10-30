@@ -18,6 +18,7 @@ push() {
         echo "nup"
     fi
 }
+gc() { git commit -m "$@" && git push }
 px() { ps uwwp ${$(pgrep -d, "${(j:|:)@}"):?no matches} }
 hl() { egrep --color=always -e '' -e${^*} }
 mkcd() { mkdir -p "$1" && cd "$1" }
