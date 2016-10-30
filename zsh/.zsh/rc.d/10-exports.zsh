@@ -1,7 +1,7 @@
 # zshrc - exports
 
 export BROWSER="/usr/bin/chromium"
-export EDITOR="nvim"
+export EDITOR="kak"
 export GREP_COLOR=31
 export MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/man"
 export MOST_EDITOR="nvim %s +%d"
@@ -16,4 +16,4 @@ export TMP="$TMP"
 export TMPDIR="$TMP"
 export TZ="Australia/Melbourne"
 export TIMEZONE=$TZ
-export VISUAL="nvim"
+export VISUAL="kak"
