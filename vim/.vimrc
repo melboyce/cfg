@@ -1,6 +1,5 @@
 " vimrc
-"
-" mel@thestack.co
+
 set nocompatible
 
 
