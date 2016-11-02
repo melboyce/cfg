@@ -69,9 +69,9 @@ hook global WinCreate .* %{
     addhl number_lines -relative -hlcursor -separator " | "
     addhl show_matching
 }
-hook global NormalKey [/?*nN]|<a-[/?*nN]> %{
+hook global NormalKey [/?*nN]|<a-[/?*nN]> %{ try %{
     addhl dynregex '%reg{/}' 0:Search
-}
-hook global NormalKey <esc> %{
+}}
+hook global NormalKey <esc> %{ try %{
     rmhl dynregex_%reg{<slash>}
-}
+}}
