@@ -2,10 +2,10 @@
 
 
 % colors
-color normal white black
-color underline brightgreen black
-color overstrike yellow black
-color status brightcyan gray
+color normal white default
+color underline yellow default
+color overstrike cyan default
+color status blue black
 
 
 % keybindings
