@@ -1,145 +1,157 @@
-# DIR_COLORS override
-
-COLOR all  # all=ttys+pipes, tty=ttys
+COLOR tty
 OPTIONS -F -T 0
 
-TERM rxvt-unicode-256color
-TERM putty-256color
-TERM rxvt-256color
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mlterm
+TERM putty
+TERM rxvt
+TERM rxvt-cygwin
+TERM rxvt-cygwin-native
+TERM rxvt-unicode
+TERM screen
 TERM screen-256color
+TERM screen-bce
+TERM screen-w
+TERM screen.linux
+TERM vt100
+TERM xterm
+TERM xterm-16color
 TERM xterm-256color
-TERM gnome-256color
+TERM xterm-88color
+TERM xterm-color
+TERM xterm-debian
 
 EIGHTBIT 1
 
-# Attribute codes: 
-# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
-# Text color(8 colors mode) codes:
-# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
-# Background color(8 colors mode) codes:
-# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-# Text color(256 colors mode) codes:
-# Valid syntax for text 256color is 38;5;<color number> , where color number
-# is number between 0 and 255.
-# Valid syntax for background 256color is 48;5;<color number> , where
-# color number is number between 0 and 255.
+# attr: 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# fg:   30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# bg:   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+NORMAL 00
+FILE 00 
+DIR 00;34
+LINK 00;36
+FIFO 01;33
+SOCK 01;35
+DOOR 01;35
+BLK 01;40;33
+CHR 01;40;33
+ORPHAN 01;31
+MISSING 01;05;31
+SETUID 01;37;41
+SETGID 01;37;41
+CAPABILITY 01;37;44
+STICKY_OTHER_WRITABLE 01;37;46
+OTHER_WRITABLE 01;37;46
+STICKY 01;37;46
 
-NORMAL 00	# global default, although everything should be something.
-FILE 00 	# normal file
-DIR 01;38;5;27 	# directory
-LINK 01;38;5;51 	# symbolic link (If you set this to 'target' instead of a
-		# numerical value, the color is as for the file pointed to.)
-FIFO 40;38;5;11	# pipe
-SOCK 01;38;5;13	# socket
-DOOR 01;38;5;5	# door
-BLK 01;48;5;232;38;5;11	# block device driver
-CHR 01;48;5;232;38;5;3 	# character device driver
-ORPHAN 01;48;5;232;38;5;9  # symlink to nonexistent file, or non-stat'able file
-MISSING 01;05;48;5;232;38;5;15 # ... and the files they point to
-SETUID 48;5;196;38;5;15	# file that is setuid (u+s)
-SETGID 48;5;11;38;5;16	# file that is setgid (g+s)
-CAPABILITY 48;5;196;38;5;226	# file with capability
-STICKY_OTHER_WRITABLE 48;5;10;38;5;16 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 48;5;10;38;5;21 # dir that is other-writable (o+w) and not sticky
-STICKY 48;5;21;38;5;15	# dir with the sticky bit set (+t) and not other-writable
+EXEC 01;32 
 
-# This is for files with execute permission:
-EXEC 01;38;5;34
+.tar 01;31 
+.tgz 01;31
+.svgz 01;31
+.arj 01;31
+.taz 01;31
+.lzh 01;31
+.lzma 01;31
+.zip 01;31
+.z   01;31
+.Z   01;31
+.dz  01;31
+.gz  01;31
+.bz2 01;31
+.tbz2 01;31
+.bz  01;31
+.tz  01;31
+.deb 01;31
+.rpm 01;31
+.jar 01;31
+.rar 01;31
+.ace 01;31
+.zoo 01;31
+.cpio 01;31
+.7z  01;31
+.rz  01;31
 
-# List any file extensions like '.gz' or '.tar' that you would like ls
-# to colorize below. Put the extension, a space, and the color init string.
-# (and any comments you want to add after a '#')
-# executables (bright green)
-#.cmd 01;38;5;34
-#.exe 01;38;5;34
-#.com 01;38;5;34
-#.btm 01;38;5;34
-#.bat 01;38;5;34
-#.sh  01;38;5;34
-#.csh 01;38;5;34
- # archives or compressed (bright red)
-.tar 01;38;5;9 
-.tgz 01;38;5;9
-.svgz 01;38;5;9
-.arj 01;38;5;9
-.taz 01;38;5;9
-.lzh 01;38;5;9
-.lzma 01;38;5;9
-.zip 01;38;5;9
-.z   01;38;5;9
-.Z   01;38;5;9
-.dz  01;38;5;9
-.gz  01;38;5;9
-.bz2 01;38;5;9
-.tbz2 01;38;5;9
-.bz  01;38;5;9
-.tz  01;38;5;9
-.deb 01;38;5;9
-.rpm 01;38;5;9
-.jar 01;38;5;9
-.rar 01;38;5;9
-.ace 01;38;5;9
-.zoo 01;38;5;9
-.cpio 01;38;5;9
-.7z  01;38;5;9
-.rz  01;38;5;9
-# image formats (magenta)
-.jpg 01;38;5;13 
-.jpeg 01;38;5;13
-.gif 01;38;5;13
-.bmp 01;38;5;13
-.pbm 01;38;5;13
-.pgm 01;38;5;13
-.ppm 01;38;5;13
-.tga 01;38;5;13
-.xbm 01;38;5;13
-.xpm 01;38;5;13
-.tif 01;38;5;13
-.tiff 01;38;5;13
-.png 01;38;5;13
-.mng 01;38;5;13
-.pcx 01;38;5;13
-.mov 01;38;5;13
-.mpg 01;38;5;13
-.mpeg 01;38;5;13
-.m2v 01;38;5;13
-.mkv 01;38;5;13
-.ogm 01;38;5;13
-.mp4 01;38;5;13
-.m4v 01;38;5;13
-.mp4v 01;38;5;13
-.vob 01;38;5;13
-.qt  01;38;5;13
-.nuv 01;38;5;13
-.wmv 01;38;5;13
-.asf 01;38;5;13
-.rm  01;38;5;13
-.rmvb 01;38;5;13
-.flc 01;38;5;13
-.avi 01;38;5;13
-.fli 01;38;5;13
-.gl 01;38;5;13
-.dl 01;38;5;13
-.xcf 01;38;5;13
-.xwd 01;38;5;13
-.yuv 01;38;5;13
-.svg 01;38;5;13
-# audio formats (cyan)
-.aac 00;38;5;45
-.au 00;38;5;45
-.flac 00;38;5;45
-.mid 00;38;5;45
-.midi 00;38;5;45
-.mka 00;38;5;45
-.mp3 00;38;5;45
-.mpc 00;38;5;45
-.ogg 00;38;5;45
-.ra 00;38;5;45
-.wav 00;38;5;45
-# project formats (
-.go 00;33
-.py 00;33
-.c 00;33
-.h 00;33
-.lua 00;33
-.erl 00;33
+.jpg 01;35 
+.jpeg 01;35
+.gif 01;35
+.bmp 01;35
+.pbm 01;35
+.pgm 01;35
+.ppm 01;35
+.tga 01;35
+.xbm 01;35
+.xpm 01;35
+.tif 01;35
+.tiff 01;35
+.png 01;35
+.mng 01;35
+.pcx 01;35
+.mov 01;35
+.mpg 01;35
+.mpeg 01;35
+.m2v 01;35
+.mkv 01;35
+.ogm 01;35
+.mp4 01;35
+.m4v 01;35
+.mp4v 01;35
+.vob 01;35
+.qt  01;35
+.nuv 01;35
+.wmv 01;35
+.asf 01;35
+.rm  01;35
+.rmvb 01;35
+.flc 01;35
+.avi 01;35
+.fli 01;35
+.gl 01;35
+.dl 01;35
+.xcf 01;35
+.xwd 01;35
+.yuv 01;35
+.svg 01;35
+
+.aac 00;36
+.au 00;36
+.flac 00;36
+.mid 00;36
+.midi 00;36
+.mka 00;36
+.mp3 00;36
+.mpc 00;36
+.ogg 00;36
+.ra 00;36
+.wav 00;36
+
+.c 01;33
+.py 01;33
+.sh 01;33
+.go 01;33
+.rb 01;33
+.erl 01;33
+.lua 01;33

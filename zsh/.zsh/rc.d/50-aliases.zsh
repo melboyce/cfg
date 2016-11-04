@@ -9,7 +9,7 @@ alias grep="grep -nH --color=auto"
 alias h="history"
 alias http="http --style monokai"
 alias j="jobs"
-alias killall="pkill"  # just in case i'm on a "real" unix
+alias killall="pkill"
 alias ls="ls --color=auto --group-directories-first --classify --time-style='+%Y-%m-%d %H:%M' --human-readable -X"
 alias ll="ls -la"
 alias mt="multitail --follow-all"
