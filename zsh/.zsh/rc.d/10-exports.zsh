@@ -13,7 +13,7 @@ export MOST_EDITOR="kak %s +%d"
 export SUDO_EDITOR="nvim -Z"  # no shell commands, no suspend (not sure if neovim disables suspend)
 export VISUAL="kak"
 export BROWSER="/usr/bin/chromium"
-[[ $(xdpinfo) ]] || export BROWSER="/usr/bin/lynx"
+[[ $(xdpyinfo)2>/dev/null ]] || export BROWSER="/usr/bin/lynx"
 
 # program options
 export GREP_COLOR=31
