@@ -9,7 +9,7 @@ hc() { herbstclient "$@"; }
 # vars
 mod=Mod4
 resizestep=0.05
-term=urxvtc
+term=st
 launcher1="rofi -show run"
 launcher2="rofi -show ssh"
 
