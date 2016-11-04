@@ -9,11 +9,11 @@ function spawnat() {
         shift
         local cmd="$1"
         shift
-        exec "$cmd" -name "$id" "$@"
+        exec "$cmd" -n "$id" "$@"
     ) &
 }
 
-cmd=${2-urxvtc}
+cmd=${2-st}
 
 case "$1" in
     "two")
