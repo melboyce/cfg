@@ -65,7 +65,7 @@ hc keybind $mod-Up            split top 0.5
 hc keybind $mod-Right         split right 0.5
 hc keybind $mod-Control-space split explode
 hc keybind $mod-F9            spawn ~/bin/herb/splitter two
-hc keybind $mod-Shift-F9      spawn ~/bin/herb/splitter two "urxvtc -sh 40"
+hc keybind $mod-Shift-F9      spawn ~/bin/herb/splitter two "urxvt -sh 30"
 
 # layouting
 hc keybind $mod-x       remove
@@ -78,7 +78,7 @@ hc keybind $mod-c       cycle
 
 # spawns
 hc keybind $mod-Return spawn $term
-hc keybind $mod-Shift-Return spawn urxvtc -tr -sh 30
+hc keybind $mod-Shift-Return spawn urxvt -tr -sh 30
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
 hc keybind $mod-F12 spawn $launcher1
 hc keybind $mod-Shift-F12 spawn $launcher2
