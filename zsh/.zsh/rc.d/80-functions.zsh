@@ -1,26 +1,16 @@
 # zshrc - functions
 
-pull() {
-    if [[ -d .hg ]]; then
-        hg pull && hg up
-    elif [[ -d .git ]]; then
-        git pull
-    else
-        echo "nup"
-    fi
-}
-push() {
-    if [[ -d .hg ]]; then
-        hg push
-    elif [[ -d .git ]]; then
-        git push
-    else
-        echo "nup"
-    fi
-}
-gc() { git commit -m "$@" && git push }
 px() { ps uwwp ${$(pgrep -d, "${(j:|:)@}"):?no matches} }
-hl() { egrep --color=always -e '' -e${^*} }
+pstop() { ps -eo pid,user,pri,ni,vsz,rsz,stat,pcpu,pmem,time,comm --sort -pcpu | head -11 }
+
 mkcd() { mkdir -p "$1" && cd "$1" }
 compdef mkcd=mkdir  # completions work like mkdir
-pstop() { ps -eo pid,user,pri,ni,vsz,rsz,stat,pcpu,pmem,time,comm --sort -pcpu | head -11 }
+
+# version control functions
+vc() {
+	if [[ -d .git ]] then {
+    	git commit -m "$@" && git push
+	} elif [[ -d .hg ]] then {
+		hg ci -m "$@" && hg push
+	}
+}
