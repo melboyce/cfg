@@ -29,7 +29,6 @@ alias watch="watch --color"
 [[ -x /usr/bin/xstow ]] && alias stow="xstow"
 
 
-
 # DISTRIBUTIONS
 # void
 alias xi="sudo xbps-install"
