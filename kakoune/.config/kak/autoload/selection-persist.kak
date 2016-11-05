@@ -1,4 +1,7 @@
 # selection-persist.kak
+
+# originally adapted from: https://github.com/kurkale6ka/kakoune-extra/blob/master/kakrc
+
 # requires `sponge` from `moreutils`
 
 # consider adding something like these to your kakrc:
