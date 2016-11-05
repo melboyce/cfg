@@ -12,11 +12,11 @@ decl str selectiondb %sh{ printf '%s/.local/share/kak/selection.db' "${HOME}" }
 
 def save-selection %{ %sh{
 	grep -v "$kak_buffile" $kak_opt_selectiondb | sponge $kak_opt_selectiondb
-	echo "`date +%s`\t$kak_buffile\t$kak_selections_desc" >> $kak_opt_selectiondb
+	echo "$kak_buffile\t$kak_selections_desc" >> $kak_opt_selectiondb
 }}
 def restore-selection %{ %sh{
 	if [ -f "$kak_buffile" ]; then
-		sel=`ag $kak_buffile $kak_opt_selectiondb | tail -1 | cut -f3`
+		sel=`ag $kak_buffile $kak_opt_selectiondb | tail -1 | cut -f2`
 		[ -n "$sel" ] && echo "eval select $sel"
 	fi
 }}
