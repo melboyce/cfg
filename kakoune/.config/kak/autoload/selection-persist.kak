@@ -1,15 +1,20 @@
 # selection-persist.kak
+# requires `sponge` from `moreutils`
 
-# TODO remove previous position before appending to dbfile
+# consider adding something like these to your kakrc:
+# hook global BufWritePre .* %{ save-selection }
+# map global normal <c-r> ':restore-selection<ret>'
+
+decl str selectiondb %sh{ printf '%s/local/share/kak/selection.db' "${HOME}" }
 
 def save-selection %{ %sh{
-	echo "`date +%s`\t$kak_buffile\t$kak_selections_desc" >> $HOME/.kakdb
+	grep -v "$kak_buffile" $kak_opt_selectiondb | sponge $kak_opt_selectiondb
+	echo "`date +%s`\t$kak_buffile\t$kak_selections_desc" >> $kak_opt_selectiondb
 }}
 def restore-selection %{ %sh{
 	if [ -f "$kak_buffile" ]; then
-		sel=`ag $kak_buffile $HOME/.kakdb | tail -1 | cut -f3`
+		sel=`ag $kak_buffile $kak_opt_selectiondb | tail -1 | cut -f3`
 		[ -n "$sel" ] && echo "eval select $sel"
 	fi
 }}
-hook global BufWritePre .* %{ save-selection }
-map global normal <c-r> ':restore-selection<ret>'
+hook global KakBegin .* %{ %sh{ mkdir -p `dirname $kak_opt_selectiondb` }}
