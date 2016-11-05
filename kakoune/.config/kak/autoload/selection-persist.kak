@@ -8,7 +8,7 @@
 # hook global BufWritePre .* %{ save-selection }
 # map global normal <c-r> ':restore-selection<ret>'
 
-decl str selectiondb %sh{ printf '%s/local/share/kak/selection.db' "${HOME}" }
+decl str selectiondb %sh{ printf '%s/.local/share/kak/selection.db' "${HOME}" }
 
 def save-selection %{ %sh{
 	grep -v "$kak_buffile" $kak_opt_selectiondb | sponge $kak_opt_selectiondb
