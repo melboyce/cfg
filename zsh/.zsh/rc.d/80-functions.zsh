@@ -7,10 +7,5 @@ mkcd() { mkdir -p "$1" && cd "$1" }
 compdef mkcd=mkdir  # completions work like mkdir
 
 # version control functions
-vc() {
-	if [[ -d .git ]] then {
-    	git commit -m "$@" && git push
-	} elif [[ -d .hg ]] then {
-		hg ci -m "$@" && hg push
-	}
-}
+gc() { git commit -m "$@" && git push }
+gs() { git stauts }
