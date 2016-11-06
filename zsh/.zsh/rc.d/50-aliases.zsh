@@ -48,6 +48,11 @@ alias hc="herbstclient"
 alias fz="feh -Zd."
 
 
+# VERSION CONTROL
+alias ga="git add"
+alias gs="git status --ignore-submodules"
+
+
 # GLOBALS
 alias -g A="|ag"
 alias -g AW="|awk"
