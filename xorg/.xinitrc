@@ -21,7 +21,6 @@ xrdb -load $HOME/.Xresources
 # daemons etc
 numlockx &
 xautolock -time 10 -locker slock &
-#urxvtd -o &
 
 
 # start the terminal multiplexer
