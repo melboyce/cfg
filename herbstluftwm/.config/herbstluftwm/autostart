@@ -12,6 +12,7 @@ resizestep=0.05
 term=st
 launcher1="rofi -show run"
 launcher2="rofi -show ssh"
+locker=slock
 
 hc emit_hook reload
 [[ -f ~/.fehbg ]] && source ~/.fehbg
@@ -82,6 +83,7 @@ hc keybind $mod-Shift-Return spawn urxvt -tr -sh 30
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
 hc keybind $mod-F12 spawn $launcher1
 hc keybind $mod-Shift-F12 spawn $launcher2
+hc keybind $mod-F11 spawn $locker
 
 # chains
 hc keybind $mod-Shift-Left  chain , split left 0.5 , focus left , spawn $term
