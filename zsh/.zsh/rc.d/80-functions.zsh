@@ -8,4 +8,3 @@ compdef mkcd=mkdir  # completions work like mkdir
 
 # version control functions
 gc() { git commit -m "$@" && git push }
-gs() { git stauts }
