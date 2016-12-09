@@ -48,7 +48,7 @@ alias jf="sudo journalctl -f"
 # MISC
 alias hc="herbstclient"
 alias fz="feh -Zd."
-alias label="paste -d ' ' <(sort -R pub/corpora/color-list.text) <(sort -R pub/corpora/animal-names.text) | head -n1 | tr '[A-Z]' '[a-z]' | toilet -f pagga | lolcat -a -s 400"
+alias label="paste -d ' ' <(sort -R ~/pub/corpora/color-list.text) <(sort -R ~/pub/corpora/animal-names.text) | head -n1 | tr '[A-Z]' '[a-z]' | toilet -f pagga | lolcat -a -s 400"
 
 
 # VERSION CONTROL
