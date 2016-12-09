@@ -16,40 +16,44 @@ function spawnat() {
 cmd=${2-st}
 
 case "$1" in
-    "two")
-        $hc split h .5
-        spawnat 00 $cmd
-        spawnat 10 $cmd
-        ;;
-    "trip")
-        $hc split v .8
-        $hc split h .5
-        spawnat 00 $cmd
-        spawnat 01 $cmd
-        spawnat 10 $cmd
-        ;;
-    "three")
-        $hc split h .7
-        $hc focus r
-        $hc split v .5
-        spawnat 00 $cmd
-        spawnat 10 $cmd
-        spawnat 11 $cmd
-        ;;
-    "four")
-        $hc split h .5
-        $hc split v .5
-        $hc focus r
-        $hc split v .5
-        spawnat 00 $cmd
-        spawnat 01 $cmd
-        spawnat 10 $cmd
-        spawnat 11 $cmd
-        ;;
-    "five")
-        $hc split h .5
-        $hc split v .2
-        $hc focus d
-        $hc split v .2
-        ;;
+	"02")  # no telemetry, 2 panes
+		$hc split h .5
+		spawnat 00 $cmd
+		spawnat 10 $cmd
+		;;
+	"l2")  # left telemetry, 2 panes
+		$hc split h .5
+		$hc split v .2
+		spawnat 00 $cmd
+		spawnat 01 $cmd
+		spawnat 10 $cmd
+		;;
+	"r2")  # right telemetry, 2 panes
+		$hc split h .5
+		$hc focus r
+		$hc split v .2
+		spawnat 00 $cmd
+		spawnat 10 $cmd
+		spawnat 11 $cmd
+		;;
+	"22")  # 2 telemetry, 2 panes
+		$hc split h .5
+		$hc split v .2
+		$hc focus r
+		$hc split v .2
+		spawnat 00 $cmd
+		spawnat 01 $cmd
+		spawnat 10 $cmd
+		spawnat 11 $cmd
+		;;
+	"04")  # four panes
+		$hc split h .5
+		$hc split v .5
+		$hc focus r
+		$hc split v .5
+		spawnat 00 $cmd
+		spawnat 01 $cmd
+		spawnat 10 $cmd
+		spawnat 11 $cmd
+		;;
 esac

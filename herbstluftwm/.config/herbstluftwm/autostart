@@ -65,8 +65,10 @@ hc keybind $mod-Down          split bottom 0.5
 hc keybind $mod-Up            split top 0.5
 hc keybind $mod-Right         split right 0.5
 hc keybind $mod-Control-space split explode
-hc keybind $mod-F9            spawn ~/bin/herb/splitter two
-hc keybind $mod-Shift-F9      spawn ~/bin/herb/splitter two "urxvt -sh 30"
+hc keybind $mod-F9            spawn ~/bin/herb/splitter l2
+hc keybind $mod-Shift-F9      spawn ~/bin/herb/splitter l2 "urxvt -sh 30"
+hc keybind $mod-F10           spawn ~/bin/herb/splitter r2
+hc keybind $mod-Shift-F10     spawn ~/bin/herb/splitter r2 "urxvt -sh 30"
 
 # layouting
 hc keybind $mod-x       remove
@@ -117,9 +119,10 @@ hc attr theme.reset 1
 hc set frame_gap 50
 hc set frame_bg_transparent 1
 hc set frame_border_width 0
+hc set window_gap 1
 hc set window_border_width 1
 hc set window_border_active_color 'yellow'
-hc set window_border_normal_color '#303030'
+hc set window_border_normal_color 'black'
 hc set window_border_urgent_color 'red'
 
 
