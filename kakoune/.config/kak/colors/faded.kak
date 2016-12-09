@@ -9,7 +9,7 @@ face keyword    rgb:80d030
 face meta       rgb:905020
 face operator   rgb:a03080
 face string     rgb:a08030
-face type       rgb:d04030
+face type       rgb:d09080
 face value      rgb:a0a030
 
 # colors - markup
@@ -24,8 +24,8 @@ face mono   green
 face title  yellow,black
 
 # colors - faces
-face BufferPadding      default
 face Default            default
+face BufferPadding      default
 face Error              rgb:ffffff,rgb:b03080
 face Information        rgb:aaaa22,rgb:202530
 face LineNumberAbsolute rgb:20bb77,rgb:000000
