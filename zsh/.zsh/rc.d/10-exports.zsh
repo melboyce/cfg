@@ -24,3 +24,7 @@ export S_COLORS="always"
 # l10n
 export TZ="Australia/Melbourne"
 export TIMEZONE=$TZ
+
+# coreutils
+export VERSION_CONTROL="off"
+export BLOCK_SIZE="human-readable"

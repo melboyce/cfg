@@ -8,3 +8,21 @@ compdef mkcd=mkdir  # completions work like mkdir
 
 # version control functions
 gc() { git commit -m "$@" && git push }
+pull() {
+	if [[ -d .git ]]; then
+		git pull
+	elif [[ -d .hg ]]; then
+		hg pull
+	else
+		echo "nup"
+	fi
+}
+push() {
+	if [[ -d .git ]]; then
+		git push
+	elif [[ -d .hg ]]; then
+		hg push
+	else
+		echo "nup"
+	fi
+}

@@ -1,7 +1,11 @@
 # zshrc - aliases
 
 # SYSTEM ADMINISTRATION
-# misc
+# coreutils
+alias cp="cp --strip-trailing-slashes"
+alias mv="mv --strip-trailing-slashes"
+alias tf="tail -f"
+
 alias dfl="df -hl --exclude tmpfs --exclude devtmpfs --total"
 alias dtr="tree -CFd"
 alias dt="tree -pugsh --dirsfirst -L 1"
@@ -13,7 +17,6 @@ alias killall="pkill"
 alias ls="ls --color=auto --group-directories-first --classify --time-style='+%Y-%m-%d %H:%M' --human-readable -X"
 alias ll="ls -la"
 alias mt="multitail --follow-all"
-alias nv="nvim"
 alias psa="ps --forest -e --sort uid"
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias pse="ps -ef"
@@ -21,7 +24,6 @@ alias pt="pstree -lnG"
 alias pta="pstree -lapG"
 alias s="ssh -4"
 alias sls="sudo salt"
-alias tf="tail -f"
 alias tree="tree -CF"
 alias watch="watch --color"
 
@@ -46,6 +48,7 @@ alias jf="sudo journalctl -f"
 # MISC
 alias hc="herbstclient"
 alias fz="feh -Zd."
+alias label="paste -d ' ' <(sort -R pub/corpora/color-list.text) <(sort -R pub/corpora/animal-names.text) | head -n1 | tr '[A-Z]' '[a-z]' | toilet -f pagga | lolcat -a -s 400"
 
 
 # VERSION CONTROL
