@@ -152,10 +152,12 @@ hc rule class=Gimp windowrole=gimp-dock focus=off index=1
 hc unlock
 
 
-# panel(s)
+# monitor-centric config
 panel=~/bin/herb/panel.sh
 for m in `herbstclient list_monitors | cut -d: -f1`; do
     "$panel" $m &
+    key=$(( $m + 1 ))
+	hc keybind $mod-F${key} focus_monitor $m
 done
 
 
