@@ -55,7 +55,7 @@ rofi.hide-scrollbar:  1
 rofi.separator-style: none
 rofi.scrollbar-width: 0
 rofi.padding:         1
-rofi.terminal:        urxvtc
+rofi.terminal:        st
 
 
 !-- colors
