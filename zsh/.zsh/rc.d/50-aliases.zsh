@@ -6,9 +6,12 @@ alias cp="cp --strip-trailing-slashes"
 alias mv="mv --strip-trailing-slashes"
 alias tf="tail -f"
 
+# tree - http://mama.indstate.edu/users/ice/tree/
+alias ldt="tree -pughCFd -L 1"
+alias ldtr="tree -pughCFd"
+alias lst="tree"
+
 alias dfl="df -hl --exclude tmpfs --exclude devtmpfs --total"
-alias dtr="tree -CFd"
-alias dt="tree -pugsh --dirsfirst -L 1"
 alias grep="grep -nH --color=auto"
 alias h="history"
 alias http="http --style monokai"
@@ -24,7 +27,6 @@ alias pt="pstree -lnG"
 alias pta="pstree -lapG"
 alias s="ssh -4"
 alias sls="sudo salt"
-alias tree="tree -CF"
 alias watch="watch --color"
 
 # optionals
