@@ -25,9 +25,10 @@ tagnames=(t1 t2 t3 t4 t5 t6 m1 m2 m3 www)
 hc rename default ${tagnames[0]} || true
 for i in ${!tagnames[@]}; do
     key=$(( $i + 1 ))
-    hc add ${tagnames[$i]}
+    tagname=${tagnames[$i]}
+    hc add $tagname
     if (( $key < 10 )); then
-        hc keybind $mod-$key       use $i
+        hc keybind $mod-$key       use_index $i
         hc keybind $mod-Shift-$key move_index $i
     fi
 done
@@ -107,11 +108,12 @@ hc mousebind $mod-Shift-Button3 zoom
 
 
 # settings
+hc set default_frame_layout 2
 hc set snap_gap 10
 hc set snap_distance 10
 hc set focus_stealing_prevention 1
-hc set swap_monitors_to_get_tag 0
-herbstclient set tree_style '╾│ ├└╼─┐'
+hc set swap_monitors_to_get_tag 1
+hc set tree_style '╾│ ├╰╼─╮'
 
 
 # theme
