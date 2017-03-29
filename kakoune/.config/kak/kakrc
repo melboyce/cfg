@@ -2,7 +2,7 @@
 
 
 # ui_options
-colorscheme faded
+colorscheme base16-ocean
 set global ui_options ncurses_enable_mouse=false:ncurses_assistant=cat
 
 
@@ -38,6 +38,12 @@ hook global NormalKey [/?*nN]|<a-[/?*nN]> %{ try %{
 }}
 hook global NormalKey <esc> %{ try %{
     rmhl dynregex_%reg{<slash>}
+}}
+hook global InsertChar \t %{
+    exec -draft -itersel h@
+}
+hook global InsertKey <backspace> %{ try %{
+    exec -draft hGh<a-k>\A\h+\Z<ret>gihyp<lt>
 }}
 
 
