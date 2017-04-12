@@ -22,10 +22,10 @@ map global user <ret> ':lint<ret>'
 map global user n ':lint-next<ret>'
 map global user b ':lint-prev<ret>'
 
-map global user f '|fmt -w 80<ret>:echo -color LineNumberAbsolute [sel] | fmt -w 80<ret>'
-map global user s '|sort -bn<ret>:echo -color LineNumberAbsolute [sel] | sort -bn<ret>'
+map global user f '|fmt -w 80<ret>:echo -color LineNumberCursor [sel] | fmt -w 80<ret>'
+map global user s '|sort -bn<ret>:echo -color LineNumberCursor [sel] | sort -bn<ret>'
 
-map global user p '!xsel<ret>:echo -color LineNumberAbsolute [sel] += xsel<ret>'
+map global user p '!xsel<ret>:echo -color LineNumberCursor [sel] += xsel<ret>'
 
 
 # hooks - run-of-the-mill

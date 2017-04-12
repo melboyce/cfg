@@ -35,3 +35,10 @@ zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#) #([a-z]#)*=
 local knownhosts
 knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+
+# misc additional completers
+local completers
+completers=("/usr/local/bin/aws_zsh_completer.sh")
+for c in "$completers"; do
+    [[ -f "$c" ]] && source "$c"
+done
