@@ -26,8 +26,11 @@ alias pse="ps -ef"
 alias pt="pstree -lnG"
 alias pta="pstree -lapG"
 alias s="ssh -4"
-alias sls="sudo salt"
 alias watch="watch --color"
+
+# devops tooling
+alias sls="sudo salt"
+alias trr="terraform"
 
 # optionals
 [[ -x /usr/bin/xstow ]] && alias stow="xstow"
