@@ -1,4 +1,4 @@
 # zshrc - things for go
 
-export GOPATH=~/x/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME  # bwahaha!
+export CDPATH=$GOPATH/src/github.com  # e.g., `cd weirdtales`
