@@ -41,12 +41,12 @@ add-zsh-hook precmd prompt_precmd
 prompt_chpwd() { FORCE_RUN_VCS_INFO=1 }
 add-zsh-hook chpwd prompt_chpwd
 
-branchcolor="%{%F{030}%}"
+branchcolor="%{%K{236}%}%{%F{030}%}"
 sepcolor="%{%F{058}%}"
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%{%K{236}%}%{%F{046}%}┄%{%k%f%}'
 zstyle ':vcs_info:*' unstagedstr '%{%K{236}%}%{%F{196}%}┄%{%k%f%}'
-zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs} %c%u"
+zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
 
 PS1='${userprompt}${hostprompt} ${pathprompt}${vcs_info_msg_0_} '
 
