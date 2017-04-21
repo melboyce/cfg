@@ -43,6 +43,10 @@ URxvt.perl-ext-common:  "default,clipboard,-searchable-scrollback"
 URxvt.iso14755:         false
 
 
+!-- dzen2
+! dzen2.font: -*-smoothansi-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 !-- rofi
 rofi.color-normal:    #001010, #e0e0f0, #102020, #103070, #d0a007
 rofi.color-urgent:    #001010, #e0e0f0, #102020, #103070, #d0a007
