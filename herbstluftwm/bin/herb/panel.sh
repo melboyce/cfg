@@ -62,6 +62,13 @@ update_pad $((height + padding_top + padding_bottom))
             date)
                 date=`date +'%Y-%m-%d'`
                 hhmm=`date +'%H:%M'`
+                if [[ -x $HOME/bin/bat.sh ]]; then
+                    batlev=`$HOME/bin/bat.sh`
+                    batcol="#13bc00"
+                    [[ "$batlev" -lt "21" ]] && batcol="#bc1300"
+                    baticon=""
+                    [[ "`cat /sys/class/power_supply/BAT0/status`" == "Charging" ]] && baticon="⚡"
+                fi
                 ;;
             quit_panel)
                 exit 0
@@ -103,8 +110,8 @@ update_pad $((height + padding_top + padding_bottom))
         done
 	output+="^fg()^bg()"
 
-	dtw=`textwidth "$font" "$date    $hhmm"`
-	output+="^pa($(( $width - $dtw ))^fg(#777)$date ^fg(yellow)$hhmm "
+	dtw=`textwidth "$font" "$date $hhmm $batlev 1234567"`
+	output+="^pa($(( $width - $dtw))^fg(#777)$date ^fg(yellow)${hhmm} ^fg(#555)| ^fg($batcol)$batlev^fg(cyan)$baticon"
 
 	echo $output
     done
