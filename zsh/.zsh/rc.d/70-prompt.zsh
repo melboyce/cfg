@@ -11,20 +11,21 @@ sepcolor="%{%F{235}%}"   # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"  # fg color for exit code if non-zero
 
 case `hostname` in
-    # workstations
-    winterfell|anvil)
+    anvil)
         hostcolor="%{%F{116}%}";;
 
-    # hosts with public ips
-    *ftp0?lx|*-bastion)
-        hostcolor="%{%K{088}%F{231}%}";;
+    rivet)
+        hostcolor="%{%F{226}%}";;
+
+    hammer)
+        hostcolor="%{%F{201}%}";;
 
     *)
-        hostcolor="%{%F{208}%}";;
+        hostcolor="%{%F{226}%}";;
 esac
 
 
-# ps1
+# user/host/path
 userprompt=""
 [[ `whoami` != $safe_username ]] && userprompt="${usercolor}%n${rs}${sepcolor}@${rs}"
 hostprompt="${hostcolor}%m${rs}"
@@ -48,6 +49,8 @@ zstyle ':vcs_info:*' stagedstr '%{%K{236}%}%{%F{046}%}┄%{%k%f%}'
 zstyle ':vcs_info:*' unstagedstr '%{%K{236}%}%{%F{196}%}┄%{%k%f%}'
 zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
 
+
+# ps1
 PS1='${userprompt}${hostprompt} ${pathprompt}${vcs_info_msg_0_} '
 
 
@@ -57,5 +60,4 @@ PS2="%{%F{190}%}%_${rs} %{%F{004}%}>%{%F{025}%}>%{%F{033}%}>${rs} "
 
 # rprompt
 exitprompt="%(?..${exitcolor}%?)"
-
 RPROMPT="${exitprompt}"
