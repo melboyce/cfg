@@ -1,8 +1,8 @@
 # zshrc - vcs stuff
 function is_repo() {
-    [[ -d .git ]] && echo "git"
-    [[ -d .hg ]] && echo "hg"
-    [[ `git rev-parse --git-dir 2>/dev/null` ]] && echo "git"
+    [[ -d .git ]] && echo "git" && return
+    [[ -d .hg ]] && echo "hg" && return
+    [[ `git rev-parse --git-dir 2>/dev/null` ]] && echo "git" && return
     echo "no"
 }
 function pull() {
