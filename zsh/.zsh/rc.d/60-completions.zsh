@@ -38,7 +38,7 @@ zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
 
 # misc additional completers
 local completers
-completers=("/usr/local/bin/aws_zsh_completer.sh")
+completers=("/usr/local/share/zsh/site-functions/*")
 for c in "$completers"; do
     [[ -f "$c" ]] && source "$c"
 done
