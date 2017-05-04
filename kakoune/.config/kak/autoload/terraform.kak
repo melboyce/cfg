@@ -13,14 +13,12 @@ hook global BufCreate .*\.tf %{
 # ‾‾‾‾‾‾‾‾‾‾‾‾
 
 add-highlighter -group / regions -default code tf \
-    back_string '`' '`' '' \
     double_string '"' (?<!\\)(\\\\)*" '' \
     single_string "'" (?<!\\)(\\\\)*' '' \
     comment /\* \*/ '' \
     comment '//' $ '' \
     comment '#' $ ''
 
-add-highlighter -group /tf/back_string fill string
 add-highlighter -group /tf/double_string fill string
 add-highlighter -group /tf/single_string fill string
 add-highlighter -group /tf/comment fill comment
@@ -30,9 +28,15 @@ add-highlighter -group /tf/code regex %{-?([0-9]*\.(?!0[xX]))?\b([0-9]+|0[xX][0-
 %sh{
     # Grammar
     keywords="connection|output|provider|variable|data|terraform"
-    types="bool"
+    types="resource|provisioner|module"
     values="false|true|on|off|yes|no"
-    functions="resource|provisioner|module"
+    functions="basename|base64decode|base64encode|base64sha256|ceil|chomp"
+    functions="${functions}|cidrhost|cidrnetmask|cidrsubnet|coalesce|compact"
+    functions="${functions}|concat|dirname|distinct|element|file|floor|format"
+    functions="${functions}|formatlist|index|join|jsonencode|keys|length|list"
+    functions="${functions}|lookup|lower|map|max|merge|min|md5|pathexpand"
+    functions="${functions}|replace|sha1|sha256|signum|slice|sort|split|substr"
+    functions="${functions}|timestamp|title|trimspace|upper|uuid|values|zipmap"
 
     # Add the language's grammar to the static completion list
     printf %s\\n "hook global WinSetOption filetype=tf %{
@@ -45,7 +49,7 @@ add-highlighter -group /tf/code regex %{-?([0-9]*\.(?!0[xX]))?\b([0-9]+|0[xX][0-
         add-highlighter -group /tf/code regex \b(${attributes})\b 0:attribute
         add-highlighter -group /tf/code regex \b(${types})\b 0:type
         add-highlighter -group /tf/code regex \b(${values})\b 0:value
-        add-highlighter -group /tf/code regex \b(${functions})\b 0:builtin
+        add-highlighter -group /tf/code regex (${functions}) 0:builtin
     "
 }
 
