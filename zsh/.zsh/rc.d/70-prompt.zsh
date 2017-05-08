@@ -32,22 +32,24 @@ hostprompt="${hostcolor}%m${rs}"
 pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
 
 # vcs
-# XXX make this cheaper
-autoload -Uz vcs_info
-autoload -U add-zsh-hook
+if [[ `hostname` != "hammer" ]]; then
+    # XXX make this cheaper
+    autoload -Uz vcs_info
+    autoload -U add-zsh-hook
 
-prompt_precmd() { vcs_info }
-add-zsh-hook precmd prompt_precmd
+    prompt_precmd() { vcs_info }
+    add-zsh-hook precmd prompt_precmd
 
-prompt_chpwd() { FORCE_RUN_VCS_INFO=1 }
-add-zsh-hook chpwd prompt_chpwd
+    prompt_chpwd() { FORCE_RUN_VCS_INFO=1 }
+    add-zsh-hook chpwd prompt_chpwd
 
-branchcolor="%{%K{236}%}%{%F{030}%}"
-sepcolor="%{%F{058}%}"
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%{%K{236}%}%{%F{046}%}┄%{%k%f%}'
-zstyle ':vcs_info:*' unstagedstr '%{%K{236}%}%{%F{196}%}┄%{%k%f%}'
-zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
+    branchcolor="%{%K{236}%}%{%F{030}%}"
+    sepcolor="%{%F{058}%}"
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr '%{%K{236}%}%{%F{046}%}┄%{%k%f%}'
+    zstyle ':vcs_info:*' unstagedstr '%{%K{236}%}%{%F{196}%}┄%{%k%f%}'
+    zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
+fi
 
 
 # ps1
