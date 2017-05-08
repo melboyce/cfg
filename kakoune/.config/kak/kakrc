@@ -43,24 +43,8 @@ hook global InsertChar \t %{
     exec -draft -itersel h@
 }
 hook global InsertKey <backspace> %{ try %{
-    # exec -draft hGh<a-k>\A\h+\Z<ret>gihyp<lt>
     exec -draft hGh<a-k>\A\h+\Z<ret><lt>
 }}
-
-
-# hooks - filetypes
-hook global WinSetOption filetype=go %{
-    set buffer lintcmd golint-kak
-    lint-enable
-}
-hook global WinSetOption filetype=sh %{
-	set buffer lintcmd 'shellcheck -fgcc -eSC2006'
-	lint-enable
-}
-hook global WinSetOption filetype=python %{
-	set buffer lintcmd 'flake8 --filename=*'
-	lint-enable
-}
 
 
 # see: autoload/selection-persist.kak
