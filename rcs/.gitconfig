@@ -1,7 +1,12 @@
 [user]
 	email = syngin@me.com
 	name = Mel Boyce
+
 [core]
 	excludesfile = ~/.gitignore
-[push]
-	default = simple
+
+[alias]
+    br = branch
+    ci = commit
+    co = checkout
+    st = status
