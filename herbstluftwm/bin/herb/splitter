@@ -36,6 +36,13 @@ case "$1" in
 		spawnat 10 $cmd
 		spawnat 11 $cmd
 		;;
+    "ide") # kak ide layout
+        $hc split h .5
+        $hc focus r
+        $hc split v .5
+        spawnat 00 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
 	"22")  # 2 telemetry, 2 panes
 		$hc split h .5
 		$hc split v .2

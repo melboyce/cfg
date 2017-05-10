@@ -11,6 +11,7 @@ set global autoreload ask
 set global indentwidth 4
 set global scrolloff 1,5
 set global tabstop 4
+set global termcmd 'st -c kakoune -e sh -c'
 
 
 # bindings - user
@@ -45,6 +46,39 @@ hook global InsertChar \t %{
 hook global InsertKey <backspace> %{ try %{
     exec -draft hGh<a-k>\A\h+\Z<ret><lt>
 }}
+
+
+# hooks - language-specific
+hook global WinSetOption filetype=go %{
+    set window formatcmd 'goimports'
+    set window indentwidth 0
+    set window lintcmd 'golint-kak'
+    set window makecmd 'go build'
+
+    go-enable-autocomplete
+
+    hook buffer BufWritePre .+\.go %{ go-format -use-goimports }
+    hook buffer BufWritePost .* lint
+
+    map window user d ':go-doc-info<ret>'
+}
+hook global WinSetOption filetype=sh %{
+    set window formatcmd 'shfmt -i 4'
+    set window lintcmd 'shellcheck -fgcc -Cnever'
+}
+
+
+# "ide"
+def ide %{
+    rename-client main
+    set global jumpclient main
+
+    new rename-client tools
+    set global toolsclient tools
+
+    new rename-client docs
+    set global docsclient docs
+}
 
 
 # see: autoload/selection-persist.kak
