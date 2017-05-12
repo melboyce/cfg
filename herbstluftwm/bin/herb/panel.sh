@@ -15,10 +15,10 @@ geometry=( `herbstclient monitor_rect $monitor` )
 x=${geometry[0]}
 y=${geometry[1]}
 ((bottom)) && y=$((${geometry[1]}+${geometry[3]}-height))
-width="${geometry[2]}"
+realwidth="${geometry[2]}"
 
 x=$((x + padding_left))
-width=$((width - padding_left - padding_right))
+width=$((realwidth - padding_left - padding_right))
 y=$((y + padding_top))
 
 xgeom="${width}x${height}+$x+$y"
@@ -62,12 +62,25 @@ update_pad $((height + padding_top + padding_bottom))
             date)
                 date=`date +'%Y-%m-%d'`
                 hhmm=`date +'%H:%M'`
+
+                # battery
                 if [[ -x $HOME/bin/bat.sh ]]; then
                     batlev=`$HOME/bin/bat.sh`
-                    batcol="#13bc00"
-                    [[ "$batlev" -lt "21" ]] && batcol="#bc1300"
-                    baticon=""
+                    batcol="#138700"
+                    [[ "$batlev" -lt "21" ]] && batcol="#933"
+                    baticon="·"
                     [[ "`cat /sys/class/power_supply/BAT0/status`" == "Charging" ]] && baticon="⚡"
+                fi
+
+                # wifi
+                lqcol="#399"
+                linkicon="☢"
+                linkname="`(iwgetid -r)`"
+                if [[ "$linkname" == "" ]]; then
+                    lqcol="#555"
+                    linkqual="d/c"
+                else
+                    linkqual="`iwconfig 2>/dev/null | grep 'Link Q' | awk '{print $2}' | cut -d= -f2`"
                 fi
                 ;;
             quit_panel)
@@ -110,10 +123,12 @@ update_pad $((height + padding_top + padding_bottom))
         done
 	output+="^fg()^bg()"
 
-	dtw=`textwidth "$font" "$date $hhmm $batlev 1234567"`
-	output+="^pa($(( $width - $dtw))^fg(#777)$date ^fg(yellow)${hhmm} ^fg(#555)| ^fg($batcol)$batlev^fg(cyan)$baticon"
+	dtw=`textwidth "$font" " xx $linkname $linkqual xxxx $batlev xxxx $date $hhmm x"`
+	output+="^pa($(( $realwidth - $dtw)) "
+    output+="^bg()^fg($lqcol)$linkicon $linkname $linkqual "
+    output+="^fg(#333)· ^fg($batcol)$baticon $batlev "
+    output+="^fg(#333)· ^fg(#777)÷ $date ^fg(yellow)${hhmm} "
 
 	echo $output
     done
-#} | $HOME/bin/lemonbar -d -g "`printf '%dx%d%+d%+d' $width $height $x $y`" -u 2 -f "$font" -B "#121212"
 } | dzen2 -xs $(( $monitor + 1 )) -h $height -w $width -fn "$font"
