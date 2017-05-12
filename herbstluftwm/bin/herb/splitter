@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hc=`which herbstclient`
+hc=$(which herbstclient)
 
 function spawnat() {
     (
@@ -16,26 +16,26 @@ function spawnat() {
 cmd=${2-st}
 
 case "$1" in
-	"02")  # no telemetry, 2 panes
-		$hc split h .5
-		spawnat 00 $cmd
-		spawnat 10 $cmd
-		;;
-	"l2")  # left telemetry, 2 panes
-		$hc split h .5
-		$hc split v .2
-		spawnat 00 $cmd
-		spawnat 01 $cmd
-		spawnat 10 $cmd
-		;;
-	"r2")  # right telemetry, 2 panes
-		$hc split h .5
-		$hc focus r
-		$hc split v .2
-		spawnat 00 $cmd
-		spawnat 10 $cmd
-		spawnat 11 $cmd
-		;;
+    "02") # no telemetry, 2 panes
+        $hc split h .5
+        spawnat 00 $cmd
+        spawnat 10 $cmd
+        ;;
+    "l2") # left telemetry, 2 panes
+        $hc split h .5
+        $hc split v .2
+        spawnat 00 $cmd
+        spawnat 01 $cmd
+        spawnat 10 $cmd
+        ;;
+    "r2") # right telemetry, 2 panes
+        $hc split h .5
+        $hc focus r
+        $hc split v .2
+        spawnat 00 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
+        ;;
     "ide") # kak ide layout
         $hc split h .5
         $hc focus r
@@ -43,24 +43,25 @@ case "$1" in
         spawnat 00 $cmd
         spawnat 10 $cmd
         spawnat 11 $cmd
-	"22")  # 2 telemetry, 2 panes
-		$hc split h .5
-		$hc split v .2
-		$hc focus r
-		$hc split v .2
-		spawnat 00 $cmd
-		spawnat 01 $cmd
-		spawnat 10 $cmd
-		spawnat 11 $cmd
-		;;
-	"04")  # four panes
-		$hc split h .5
-		$hc split v .5
-		$hc focus r
-		$hc split v .5
-		spawnat 00 $cmd
-		spawnat 01 $cmd
-		spawnat 10 $cmd
-		spawnat 11 $cmd
-		;;
+        ;;
+    "22") # 2 telemetry, 2 panes
+        $hc split h .5
+        $hc split v .2
+        $hc focus r
+        $hc split v .2
+        spawnat 00 $cmd
+        spawnat 01 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
+        ;;
+    "04") # four panes
+        $hc split h .5
+        $hc split v .5
+        $hc focus r
+        $hc split v .5
+        spawnat 00 $cmd
+        spawnat 01 $cmd
+        spawnat 10 $cmd
+        spawnat 11 $cmd
+        ;;
 esac
