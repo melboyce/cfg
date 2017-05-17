@@ -42,3 +42,5 @@ completers=("/usr/local/share/zsh/site-functions/*")
 for c in "$completers"; do
     [[ -f "$c" ]] && source "$c"
 done
+_aws_comp=/usr/bin/aws_zsh_completer.sh
+[[ -x $_aws_comp ]] && source $_aws_comp
