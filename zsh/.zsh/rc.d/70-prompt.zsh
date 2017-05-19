@@ -10,7 +10,7 @@ usercolor="%{%F{160}%}"  # if a username is displayed, it is this color
 sepcolor="%{%F{235}%}"   # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"  # fg color for exit code if non-zero
 
-case `hostname` in
+case $HOST in
     anvil)
         hostcolor="%{%F{116}%}";;
 
@@ -32,7 +32,7 @@ hostprompt="${hostcolor}%m${rs}"
 pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
 
 # vcs
-if [[ `hostname` != "hammer" ]]; then
+if [[ $HOST != "hammer" ]]; then  # TODO generalize this
     # XXX make this cheaper
     autoload -Uz vcs_info
     autoload -U add-zsh-hook
