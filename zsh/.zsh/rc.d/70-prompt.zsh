@@ -20,6 +20,9 @@ case $HOST in
     hammer)
         hostcolor="%{%F{201}%}";;
 
+    jake)
+        hostcolor="%{%F{202}%}";;
+
     *)
         hostcolor="%{%F{226}%}";;
 esac
