@@ -1,7 +1,6 @@
 # zshrc - init
 
 TMP=$HOME/tmp
-hostname=`hostname`
 cachedir=~/.cache/zsh
 mkdir -p $cachedir $TMP
 
