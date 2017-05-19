@@ -41,6 +41,9 @@ alias trr="terraform"
 alias xi="sudo xbps-install"
 alias xq="sudo xbps-query"
 
+# alpine
+alias sapk="sudo apk"
+
 # arch
 alias spm="sudo pacman"
 
