@@ -37,7 +37,7 @@ alias trr="terraform"
 
 # busybox
 # TODO generalize this into a userland switch statement
-if [[ ! `hash busybox 2>/dev/null` ]]; then
+if [[ `hash busybox 2>/dev/null` ]]; then
     alias ls="ls --color=auto -Xhe"
 fi
 
