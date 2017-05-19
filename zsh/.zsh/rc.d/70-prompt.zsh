@@ -33,7 +33,7 @@ pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
 
 # vcs
 slowhosts=(hammer jake)
-if [[ ! ${slowhosts[(r)$HOST] ]]; then  # TODO generalize this
+if [[ ! ${slowhosts[(r)$HOST]} ]]; then  # TODO generalize this
     # XXX make this cheaper
     autoload -Uz vcs_info
     autoload -U add-zsh-hook
