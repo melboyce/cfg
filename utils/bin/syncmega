@@ -1,0 +1,19 @@
+#!/usr/bin/zsh
+
+# uploads files to mega
+# ~/mega should contain symlinks to content dirs
+
+die() { echo $* >2&; exit 1; }
+log() { echo `date +%FT%T%z` $* }
+
+hash megacopy 2>/dev/null || die "missing dependency: megacopy"
+test -d $HOME/mega || die "missing dir.: $HOME/mega"
+
+for f in $HOME/mega/*; do
+    test -L $f || die "$f is not a symlink"
+done
+
+for f in $HOME/mega/*; do
+    dir="${f#$HOME/mega/}"
+    megacopy -l "`readlink -f $f`" -r /Root/$dir
+done
