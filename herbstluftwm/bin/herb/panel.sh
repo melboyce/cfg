@@ -90,45 +90,46 @@ update_pad $((height + padding_top + padding_bottom))
                 ;;
         esac
 
-	output=""
-        for i in "${tags[@]}"; do
-            occupied=true
-            focused=false
-            here=false
-            urgent=false
-            visible=true
-            case ${i:0:1} in
-                '.')
-                    occupied=false
-                    visible=false
-                    ;;
-                '#')
-                    focused=true
-                    here=true
-                    ;;
-                '%') focused=true;;
-                '+') here=true;;
-                '!') urgent=true;;
-                ':') visible=false;;
-            esac
+        output=""
+            for i in "${tags[@]}"; do
+                occupied=true
+                focused=false
+                here=false
+                urgent=false
+                visible=true
+                case ${i:0:1} in
+                    '.')
+                        occupied=false
+                        visible=false
+                        ;;
+                    '#')
+                        focused=true
+                        here=true
+                        ;;
+                    '%') focused=true;;
+                    '+') here=true;;
+                    '!') urgent=true;;
+                    ':') visible=false;;
+                esac
 
-	    tagname="${i:1}"
+            tagname="${i:1}"
 
-	    $here     && output+="^bg(#333)" || output+="^bg()"
-	    #$visible  && output+="^fg()" || output+=""
-	    $occupied && output+="^fg()" || output+="^fg(#555)"
-	    $urgent   && output+="^bg(#e33)"
-	    $focused  && output+="^bg(yellow)^fg(#111)" || output+=""
-            output+=" $tagname "
-        done
-	output+="^fg()^bg()"
+            $here     && output+="^bg(#333)" || output+="^bg()"
+            #$visible  && output+="^fg()" || output+=""
+            $occupied && output+="^fg()" || output+="^fg(#555)"
+            $urgent   && output+="^bg(#e33)"
+            $focused  && output+="^bg(yellow)^fg(#111)" || output+=""
+                output+=" $tagname "
+            done
+        output+="^fg()^bg()"
 
-	dtw=`textwidth "$font" " xx $linkname $linkqual xxxx $batlev xxxx $date $hhmm x"`
-	output+="^pa($(( $realwidth - $dtw)) "
-    output+="^bg()^fg($lqcol)$linkicon $linkname $linkqual "
-    output+="^fg(#333)· ^fg($batcol)$baticon $batlev "
-    output+="^fg(#333)· ^fg(#777)÷ $date ^fg(yellow)${hhmm} "
+        dtw=`textwidth "$font" "x $linkname $linkqual x x $batlev x x $date $hhmm xxxxxxx"`
+        pleft=$(( $realwidth - $dtw ))
+        output+="^pa($pleft)"
+        output+="^bg()^fg($lqcol)$linkicon $linkname $linkqual "
+        output+="^fg(#333)· ^fg($batcol)$baticon $batlev "
+        output+="^fg(#333)· ^fg(#777)÷ $date ^fg(yellow)${hhmm} "
 
-	echo $output
+        echo $output
     done
 } | dzen2 -xs $(( $monitor + 1 )) -h $height -w $width -fn "$font"
