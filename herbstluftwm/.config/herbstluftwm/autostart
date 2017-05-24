@@ -21,7 +21,7 @@ hc emit_hook reload
 hc keyunbind --all
 
 # tags
-tagnames=(t1 t2 t3 t4 t5 t6 m1 m2 m3 www)
+tagnames=(1 2 3 4 5 6 7 8 9 w)
 hc rename default ${tagnames[0]} || true
 for i in ${!tagnames[@]}; do
     key=$(( $i + 1 ))
