@@ -10,7 +10,6 @@ xset fp rehash
 # xset
 xset r rate 200 50  # keyboard rate
 xset -b             # disable BEEP
-xset s off          # turn off "screensaver"
 
 
 # resources and keyboard
