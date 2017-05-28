@@ -9,7 +9,7 @@ padding_bottom=0
 padding_left=0
 padding_right=$padding_left
 bottom=0
-font="-*-smoothansi-medium-*-*-*-13-*-*-*-*-*-*-*"
+font="PragmataPro:size=10"
 
 geometry=( `herbstclient monitor_rect $monitor` )
 x=${geometry[0]}
@@ -66,18 +66,28 @@ update_pad $((height + padding_top + padding_bottom))
                 # battery
                 if [[ -x $HOME/bin/bat.sh ]]; then
                     batlev=`$HOME/bin/bat.sh`
-                    batcol="#138700"
-                    [[ "$batlev" -lt "21" ]] && batcol="#933"
-                    baticon="·"
-                    [[ "`cat /sys/class/power_supply/BAT0/status`" == "Charging" ]] && baticon="⚡"
+                    batcol="#48e"
+                    baticon="\uf059"  # question
+                    if ((batlev>=0 && batlev<=10)); then
+                        baticon="\uf244"; batcol="#e44"  # empty
+                    elif ((batlev>=11 && batlev<=39)); then
+                        baticon="\uf243"  # batt 1/3
+                    elif ((batlev>=40 && batlev<=59)); then 
+                        baticon="\uf242"  # batt 1/2
+                    elif ((batlev>=60 && batlev<=79)); then
+                        baticon="\uf241"  # batt 2/3
+                    else
+                        baticon="\uf240"  # batt full
+                    fi
+                    [[ "`cat /sys/class/power_supply/BAT0/status`" == "Charging" ]] && { baticon="\uf0e7$baticon"; batcol="#2a4"; }
                 fi
 
                 # wifi
                 lqcol="#399"
-                linkicon="☢"
+                linkicon="\uf1eb"
                 linkname="`(iwgetid -r)`"
                 if [[ "$linkname" == "" ]]; then
-                    lqcol="#555"
+                    lqcol="#a55"
                     linkqual="d/c"
                 else
                     linkqual="`iwconfig 2>/dev/null | grep 'Link Q' | awk '{print $2}' | cut -d= -f2`"
@@ -91,45 +101,48 @@ update_pad $((height + padding_top + padding_bottom))
         esac
 
         output=""
-            for i in "${tags[@]}"; do
-                occupied=true
-                focused=false
-                here=false
-                urgent=false
-                visible=true
-                case ${i:0:1} in
-                    '.')
-                        occupied=false
-                        visible=false
-                        ;;
-                    '#')
-                        focused=true
-                        here=true
-                        ;;
-                    '%') focused=true;;
-                    '+') here=true;;
-                    '!') urgent=true;;
-                    ':') visible=false;;
-                esac
+        for i in "${tags[@]}"; do
+            occupied=true
+            focused=false
+            here=false
+            urgent=false
+            visible=true
+            case ${i:0:1} in
+                '.')
+                    occupied=false
+                    visible=false
+                    ;;
+                '#')
+                    focused=true
+                    here=true
+                    ;;
+                '%') focused=true;;
+                '+') here=true;;
+                '!') urgent=true;;
+                ':') visible=false;;
+            esac
 
             tagname="${i:1}"
+            tagicon="$tagname"
+            [[ "$tagname" == "w" ]] && tagicon="\uf0c2"
+            [[ "$tagname" == "gimp" ]] && tagicon="\uf1fc"
 
-            $here     && output+="^bg(#333)" || output+="^bg()"
-            #$visible  && output+="^fg()" || output+=""
-            $occupied && output+="^fg()" || output+="^fg(#555)"
-            $urgent   && output+="^bg(#e33)"
-            $focused  && output+="^bg(yellow)^fg(#111)" || output+=""
-                output+=" $tagname "
-            done
-        output+="^fg()^bg()"
+            $here     && output+="%{B#333}" || output+="%{B-}"
+            #$visible  && output+="%{F-}" || output+=""
+            $occupied && output+="%{F-}" || output+="%{F#555}"
+            $urgent   && output+="%{B#a33}" || output+="%{B-}%{-u}"
+            $focused  && output+="%{B#560}%{U#ef2}%{+u}" || output+="%{B-}%{-u}"
+            output+="%{A:herbstclient use $tagname:} $tagicon %{A}"
+        done
+        output+="%{F-}%{B-}%{-u}"
 
-        dtw=`textwidth "$font" "x $linkname $linkqual x x $batlev x x $date $hhmm xxxxxxx"`
-        pleft=$(( $realwidth - $dtw ))
-        output+="^pa($pleft)"
-        output+="^bg()^fg($lqcol)$linkicon $linkname $linkqual "
-        output+="^fg(#333)· ^fg($batcol)$baticon $batlev "
-        output+="^fg(#333)· ^fg(#777)÷ $date ^fg(yellow)${hhmm} "
+        output+="%{c}%{F#38c}$xxx%{F-}"
 
-        echo $output
+        output+="%{r}%{B-}%{F$lqcol}$linkicon $linkname $linkqual "
+        output+="%{F#000}...%{F$batcol}$baticon $batlev "
+        output+="%{F#000}...%{F#888}\uf017 $date %{F#EF2}${hhmm} "
+        output+="%{F#822}%{A:slock:}\uf023%{A}"
+
+        echo -e "$output"
     done
-} | dzen2 -xs $(( $monitor + 1 )) -h $height -w $width -fn "$font"
+} | lemonbar -a 15 -f "$font" -f "Font Awesome" -u2 | bash
