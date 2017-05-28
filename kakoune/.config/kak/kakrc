@@ -3,7 +3,7 @@
 
 # ui_options
 colorscheme base16-ocean
-set global ui_options ncurses_enable_mouse=false:ncurses_assistant=cat
+set global ui_options ncurses_enable_mouse=false:ncurses_assistant=cat:ncurses_set_title=false
 
 
 # global options
@@ -69,6 +69,9 @@ hook global WinSetOption filetype=sh %{
 hook global WinSetOption filetype=python %{
     set window formatcmd 'autopep8 -'
     set window lintcmd 'flake8 --format="%(path)s:%(row)d:%(col)d: error: %(text)s"'
+}
+hook global WinSetOption filetype=makefile %{
+    set indentwidth 0
 }
 
 
