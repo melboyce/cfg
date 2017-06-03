@@ -8,7 +8,7 @@
 !-- fonts
 Xft.antialias:          1
 Xft.autohint:           1
-Xft.dpi:                91
+Xft.dpi:                96
 Xft.hinting:            1
 Xft.hintstyle:          hintslight
 Xft.lcdfilter:          lcddefault
@@ -17,7 +17,7 @@ Xft.rgba:               rgb
 
 !-- terminals
 xterm*termName:         xterm-256color
-xterm*faceName:         terminus:pixelsize=12
+xterm*faceName:         terminus:pixelsize=8
 xterm*utf8:             2
 xterm*saveLines:        1024
 xterm*loginShell:       true
@@ -32,19 +32,15 @@ URxvt.depth:            24
 URxvt*fading:           0
 URxvt*blurRadius:       0
 URxvt.scrollBar:        off
-URxvt.font:             xft:PragmataPro:size=10:style=Regular
-URxvt.boldFont:         xft:PragmataPro:size=10:style=Regular
+URxvt.font:             xft:PragmataPro:size=8:style=Regular
+URxvt.boldFont:         xft:PragmataPro:size=8:style=Regular
 URxvt.letterSpace:      0
 URxvt.saveLines:        2048
 URxvt*visualBell:       false
 URxvt*urgentOnBell:     true
-URxvt.perl-ext-common:  "default,clipboard,-searchable-scrollback"
+!URxvt.perl-ext-common:  "default,clipboard,-searchable-scrollback"
 !URxvt.colorUL:          #24d
 URxvt.iso14755:         false
-
-
-!-- dzen2
-! dzen2.font: -*-smoothansi-*-*-*-*-*-*-*-*-*-*-*-*
 
 
 !-- rofi
@@ -52,7 +48,7 @@ rofi.color-normal:    #001010, #e0e0f0, #102020, #103070, #d0a007
 rofi.color-urgent:    #001010, #e0e0f0, #102020, #103070, #d0a007
 rofi.color-active:    #001010, #e0e0f0, #102020, #103070, #d0a007
 rofi.modi:            run,ssh
-rofi.font:            PragmataPro 10
+rofi.font:            PragmataPro 14
 rofi.bw:              0
 rofi.line-margin:     0
 rofi.hide-scrollbar:  1
