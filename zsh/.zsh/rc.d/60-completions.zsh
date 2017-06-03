@@ -37,10 +37,5 @@ knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
 
 # misc additional completers
-local completers
-completers=("/usr/local/share/zsh/site-functions/*")
-for c in "$completers"; do
-    [[ -f "$c" ]] && source "$c"
-done
 _aws_comp=/usr/bin/aws_zsh_completer.sh
 [[ -x $_aws_comp ]] && source $_aws_comp

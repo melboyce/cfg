@@ -20,9 +20,6 @@ case $HOST in
     hammer)
         hostcolor="%{%F{201}%}";;
 
-    jake)
-        hostcolor="%{%F{202}%}";;
-
     *)
         hostcolor="%{%F{226}%}";;
 esac
@@ -36,8 +33,7 @@ pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
 
 # vcs
 slowhosts=(hammer jake)
-if [[ ! ${slowhosts[(r)$HOST]} ]]; then  # TODO generalize this
-    # XXX make this cheaper
+if [[ ! ${slowhosts[(r)$HOST]} ]]; then
     autoload -Uz vcs_info
     autoload -U add-zsh-hook
 
@@ -47,11 +43,13 @@ if [[ ! ${slowhosts[(r)$HOST]} ]]; then  # TODO generalize this
     prompt_chpwd() { FORCE_RUN_VCS_INFO=1 }
     add-zsh-hook chpwd prompt_chpwd
 
-    branchcolor="%{%K{236}%}%{%F{030}%}"
+    branchcolor="%{%K{235}%}%{%F{247}%}"
     sepcolor="%{%F{058}%}"
+    zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '%{%K{236}%}%{%F{046}%}┄%{%k%f%}'
-    zstyle ':vcs_info:*' unstagedstr '%{%K{236}%}%{%F{196}%}┄%{%k%f%}'
+    zstyle ':vcs_info:*' get-revision true
+    zstyle ':vcs_info:*' stagedstr '%{%K{235}%}%{%F{247}%}  %{%k%f%}'
+    zstyle ':vcs_info:*' unstagedstr '%{%K{235}%}%{%F{247}%}  %{%k%f%}'
     zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
 fi
 
