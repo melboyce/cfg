@@ -4,11 +4,17 @@
 
 # colors
 rs="%{%k%f%}"
-safe_username="mel"      # this username will not appear in prompts
-pathcolor="%{%F{024}%}"  # color of the path
-usercolor="%{%F{160}%}"  # if a username is displayed, it is this color
-sepcolor="%{%F{235}%}"   # color of '@' in 'user@host'
-exitcolor="%{%F{196}%}"  # fg color for exit code if non-zero
+safe_username="mel"         # this username will not appear in prompts
+pathcolor="%{%F{024}%}"     # color of the path
+usercolor="%{%F{160}%}"     # if a username is displayed, it is this color
+sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
+exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
+vcsiconcolor="%{%F{250}%}"  # vcs icon
+branchcolor="%{%F{070}%}"   # vcs branch
+stagedcolor="%{%F{023}%}"   # staged change icon
+unstagedcolor="%{%F{023}%}" # unstaged change icon
+repocolor="%{%F{025}%}"     # repo name
+repopathcolor="%{%F{037}%}" # repo path
 
 case $HOST in
     anvil)
@@ -31,31 +37,27 @@ userprompt=""
 hostprompt="${hostcolor}%m${rs}"
 pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
 
-# vcs
-slowhosts=(hammer jake)
-if [[ ! ${slowhosts[(r)$HOST]} ]]; then
-    autoload -Uz vcs_info
-    autoload -U add-zsh-hook
 
-    prompt_precmd() { vcs_info }
-    add-zsh-hook precmd prompt_precmd
-
-    prompt_chpwd() { FORCE_RUN_VCS_INFO=1 }
-    add-zsh-hook chpwd prompt_chpwd
-
-    branchcolor="%{%K{235}%}%{%F{247}%}"
-    sepcolor="%{%F{058}%}"
-    zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' stagedstr '%{%K{235}%}%{%F{247}%}  %{%k%f%}'
-    zstyle ':vcs_info:*' unstagedstr '%{%K{235}%}%{%F{247}%}  %{%k%f%}'
-    zstyle ':vcs_info:git*' formats " ${branchcolor}%b${rs}%c%u"
-fi
+# vcs bits
+stagedstr="${stagedcolor}  ${rs}"
+unstagedstr="${unstagedcolor}  ${rs}"
+zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' stagedstr $stagedstr
+zstyle ':vcs_info:*' unstagedstr $unstagedstr
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b${rs}%c%u"
 
 
-# ps1
-PS1='${userprompt}${hostprompt} ${pathprompt}${vcs_info_msg_0_} '
+# precmd - only do vcs prompt work when needed
+precmd() {
+    vcs_info
+    if [[ ! -n ${vcs_info_msg_0_} ]]; then
+        PS1='${userprompt}${hostprompt} ${pathprompt} '
+    else
+        PS1='${vcs_info_msg_0_} '
+    fi
+}
 
 
 # ps2
