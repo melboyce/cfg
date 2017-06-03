@@ -24,3 +24,6 @@ zmodload zsh/datetime
 
 # run-help: esc+h => in-line man page
 autoload run-help
+
+# vcs info
+autoload -Uz vcs_info
