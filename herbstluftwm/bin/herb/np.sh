@@ -4,7 +4,7 @@
 # requires: lemonbar bc iwgetid iwconfig
 
 # control vars
-font="PragmataPro:style=Regular:size=12"
+font="PragmataPro:style=Regular:size=13"
 
 col_bg="#222"
 col_fg="#aaa"
@@ -13,10 +13,19 @@ col_tag_active="#d28"
 col_tag_urgent="#d28"
 col_icon="#9e0"
 col_data="#ed3"
+col_dull="#555"
+
+icon_tag="\uf22d"
+icon_empty_tag="\uf107"
+icon_focused="\uf005"
+icon_urgent="\uf0f3"
+icon_term="\uf120"
+icon_web="\uf0c2"
+icon_book="\uf02d"
+
 u_height=6  # underline height
 
 monitor=${1:-0}
-bar_geom="x30++"  # [width]x[height]+[x]+[y]
 herbstclient pad $monitor 30
 battpath="/sys/class/power_supply/BAT0"
 temppath="/sys/class/thermal/thermal_zone7"
@@ -92,6 +101,16 @@ while true; do
 done >$fifo &
 
 
+# load
+while true; do
+    load_idle_pc=$(vmstat 1 2 | tail -n1 | awk '{print $15}')
+    load_pc=$((100 - load_idle_pc))
+    load_avg=$(cat /proc/loadavg | awk '{print $1" "$2" "$3}')
+    printf "load\t%s\t%s\n" "$load_pc" "$load_avg"
+    sleep $((timeout * 1))
+done >$fifo &
+
+
 # herbstluft
 herbstclient --idle >$fifo &
 
@@ -99,6 +118,7 @@ herbstclient --idle >$fifo &
 # bar
 tags=( $(herbstclient tag_status "$monitor" 2>/dev/null) )
 date_ymd="$(date +'%Y-%m-%d')"; date_hms="$(date +'%H:%M')"
+load_pc="?"
 while true; do
     IFS=$'\t' read -ra event || break
     case "${event[0]}" in
@@ -110,42 +130,38 @@ while true; do
         batt)  { batt_pc="${event[1]}"; batt_idx="${event[2]}"; batt_chg="${event[3]}"; };;
         wifi)  { wifi_ssid="${event[1]}"; wifi_pc="${event[2]}"; wifi_idx="${event[3]}"; };;
         temp)  { temp_val="${event[1]}"; };;
+        load)  { load_pc="${event[1]}"; load_avg="${event[2]}"; };;
         *)     ;;
-    esac
-
-    # client icon
-    if [[ "$client_id" != "" ]]; then
-        client_name=$(xprop -id $client_id WM_CLASS|awk '{print $4}'|tr -d \"|tr 'A-Z' 'a-z')
-    fi
-    case "$client_name" in
-        st-*)             client_icon="\uf120";;
-        mupdf)            client_icon="\uf02d";;
-        kakoune|nano|vim) client_icon="\uf0c7";;
-        *)                client_icon="\uf1b2";;
     esac
 
     # tags
     o_tags=""
     for i in "${tags[@]}"; do
-        o_tags+="%{F${col_tag}}"
-        occupied=true; focused=false; here=false; urgent=false; visible=true
-        case "${i:0:1}" in
-            '.') occupied=false; visible=false;;
-            '#') focused=true; here=true;;
-            '%') focused=true;;
-            '+') here=true;;
-            '!') urgent=true;;
-            ':') visible=false;;
-        esac
         tagname="${i:1}"
-        tagicon="\uf22d"
-        $here     && o_tags+=""
-        $occupied && { o_tags+=""; tagicon="\uf08a"; }
-        $urgent   && { o_tags+="%{F${col_tag_urgent}}"; tagicon="\uf0f3"; }
-        $focused  && { o_tags+="%{F${col_tag_active}}%{U${col_tag_active}}%{+u}"; tagicon="$client_icon"; }
-        [[ "$tagname" == "w" ]]    && tagicon="\uf0c2"
-        [[ "$tagname" == "gimp" ]] && tagicon="\uf1fc"
-        o_tags+="%{A:herbstclient use $tagname:} $tagicon %{A}%{B-}%{F-}%{-u}"
+        o_tags+="%{F${col_tag}}"
+        empty=false; focused=false; thismonitor=false; othermonitor=false; urgent=false;
+        case "${i:0:1}" in
+            '.') empty=true;;
+            ':') empty=false;;
+            '+') thismonitor=true; focused=false;;
+            '#') thismonitor=true; focused=true;;
+            '-') othermonitor=true; focused=false;;
+            '%') othermonitor=true; focused=true;;
+            '!') urgent=true;;
+        esac
+        tagicon="$icon_empty_tag"
+        $empty || tagicon="$icon_tag"
+        $thismonitor && $focused && {
+            o_tags+="%{B${col_tag_active}}%{F#fff}"
+            tagicon="$icon_focused"
+        }
+        case "$tagname" in
+            t?) tagicon="$icon_term";;
+            w)  tagicon="$icon_web";;
+            b)  tagicon="$icon_book";;
+        esac
+        $urgent && { o_tags+="%{F${col_tag_urgent}}"; tagicon="$icon_urgent"; }
+        o_tags+="%{A:herbstclient use $tagname:} $tagicon %{B-}%{F-}%{-u}%{A}"
     done
 
     o_right=""
@@ -153,9 +169,17 @@ while true; do
 
     # wifi
     wifi_icon="\uf1eb"
+    wifi_icon="\uf0ac"
     [[ "$wifi_idx" -gt "0" ]] && o_left+="%{F${col_icon}}" || o_left+="%{F-}"
     o_left+="$wifi_icon %{F-}$wifi_ssid "
-    [[ "$wifi_ssid" != "-" ]] && o_left+="%{F${col_data}}$wifi_pc%"
+    [[ "$wifi_ssid" != "-" ]] && o_left+="%{F-}$wifi_pc%"
+    o_left+="%{F${col_bg}}. "
+
+    # load
+    load_icon="\uf21e"
+    load_div="%{F${col_dull}}\uf0a9%{F-}"
+    o_left+="%{F${col_icon}}$load_icon %{F-}"
+    o_left+="$load_pc% $load_div $load_avg"
     o_left+="%{F${col_bg}}. "
 
     # temp
@@ -181,7 +205,10 @@ while true; do
     # datetime
     o_right+="%{F${col_icon}}\uf017"
     o_right+="%{F-} $date_ymd%{F${col_data}} $date_hms"
-    o_right+="%{B-}%{F-}"
+    o_right+="%{F${col_bg}}."
 
-    echo -e "%{l} $o_left%{c}$o_tags%{r}$o_right "
-done <$fifo 2>/dev/null | lemonbar -g "$bar_geom" -f "$font" -f "Font Awesome" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
+    # locker
+    o_right+="%{A:slock:}%{F${col_dull}}\uf023%{F-}%{A}"
+
+    echo -e "%{l} $o_left%{c}$o_tags%{r}$o_right"
+done <$fifo 2>/dev/null | lemonbar -f "$font" -f "Font Awesome:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
