@@ -1,8 +1,5 @@
 #!/bin/bash
-
 # herbstluftwm - autostart
-#
-# mel@thestack.co
 
 hc() { herbstclient "$@"; }
 
