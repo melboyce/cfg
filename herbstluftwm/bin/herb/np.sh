@@ -125,8 +125,8 @@ while true; do
         "3") icon_temp="\uf2c8";;
         "4") icon_temp="\uf2c7";;
     esac
-    o_temp+="%{F${col_icon}}$icon_temp "
-    o_temp+="%{F-}$temp_val°C"
+    [[ "$temp_idx" == "4" ]] && o_temp+="%{F${col_tag_urgent}}" || o_temp+="%{F${col_icon}}"
+    o_temp+="$icon_temp %{F-}$temp_val°C"
 
     # battery
     o_batt=""
