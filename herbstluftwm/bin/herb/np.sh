@@ -35,7 +35,7 @@ icon_wifi_down="\uf132"
 icon_batt="\uf059"
 icon_batt_chg="\uf0e7"
 icon_temp="\uf29c"
-icon_load="\uf186"
+icon_load="\uf0a0"
 
 ui_sep="%{F${col_bg}}..%{F-}"
 u_height=6  # underline height
