@@ -35,7 +35,7 @@ esac
 userprompt=""
 [[ `whoami` != $safe_username ]] && userprompt="${usercolor}%n${rs}${sepcolor}@${rs}"
 hostprompt="${hostcolor}%m${rs}"
-pathprompt="${pathcolor}%5(c:...:)%4c${rs}"
+pathprompt="${pathcolor}%4(c:...:)%3c${rs}"
 
 
 # vcs bits
