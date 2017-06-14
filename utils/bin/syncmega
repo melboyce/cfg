@@ -15,5 +15,6 @@ done
 
 for f in $HOME/mega/*; do
     dir="${f#$HOME/mega/}"
+    megamkdir /Root/$dir 2>/dev/null
     megacopy -l "`readlink -f $f`" -r /Root/$dir
 done
