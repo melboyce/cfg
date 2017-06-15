@@ -14,7 +14,10 @@ for f in $HOME/mega/*; do
 done
 
 for f in $HOME/mega/*; do
+    rf="`readlink -f $f`"
     dir="${f#$HOME/mega/}"
+    echo -n "syncing $dir: "
     megamkdir /Root/$dir 2>/dev/null
-    megacopy -l "`readlink -f $f`" -r /Root/$dir
+    megacopy -l "$rf" -r "/Root/$dir" 2>/dev/null
+    echo "done."
 done
