@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 xinput | egrep 'slave\s+pointer' | grep -vi xtest | while read line; do
-  devid="`echo ${line##*=}|cut -f1`"                                          
-  propid=`xinput list-props $devid | grep 'libinput Natural Scrolling Enabled (' | cut -d\( -f2 | cut -d\) -f1`
-  [[ "$propid" != "" ]] && xinput set-prop $devid $propid 1                                                    
+    devid="`echo ${line##*=}|cut -f1`"                                          
+    xinput set-prop "libinput Natural Scrolling Enabled" 1
+    xinput set-prop "libinput Click Method Enabled" 0, 1
 done
