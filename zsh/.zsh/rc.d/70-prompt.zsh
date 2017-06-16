@@ -5,7 +5,7 @@
 # colors
 rs="%{%k%f%}"
 safe_username="mel"         # this username will not appear in prompts
-pathcolor="%{%F{024}%}"     # color of the path
+pathcolor="%{%F{069}%}"     # color of the path
 usercolor="%{%F{160}%}"     # if a username is displayed, it is this color
 sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
@@ -18,23 +18,26 @@ repopathcolor="%{%F{037}%}" # repo path
 
 case $HOST in
     anvil)
-        hostcolor="%{%F{116}%}";;
+        hostcolor="%{%F{116}%}"
+        hostprompt="${hostcolor}%m${rs}";;
 
     rivet)
-        hostcolor="%{%F{226}%}";;
+        hostcolor="%{%F{226}%}"
+        hostprompt="$hostcolor"`printf "\uf109 "`"$rs";;
 
     hammer)
-        hostcolor="%{%F{201}%}";;
+        hostcolor="%{%F{201}%}"
+        hostprompt="${hostcolor}%m${rs}";;
 
     *)
-        hostcolor="%{%F{226}%}";;
+        hostcolor="%{%F{226}%}"
+        hostprompt="${hostcolor}%m${rs}";;
 esac
 
 
 # user/host/path
 userprompt=""
 [[ `whoami` != $safe_username ]] && userprompt="${usercolor}%n${rs}${sepcolor}@${rs}"
-hostprompt="${hostcolor}%m${rs}"
 pathprompt="${pathcolor}%4(c:...:)%3c${rs}"
 
 
