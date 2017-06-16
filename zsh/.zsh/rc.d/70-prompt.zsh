@@ -11,8 +11,8 @@ sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
 vcsiconcolor="%{%F{250}%}"  # vcs icon
 branchcolor="%{%F{171}%}"   # vcs branch
-stagedcolor="%{%F{023}%}"   # staged change icon
-unstagedcolor="%{%F{023}%}" # unstaged change icon
+stagedcolor="%{%F{029}%}"   # staged change icon
+unstagedcolor="%{%F{029}%}" # unstaged change icon
 repocolor="%{%F{025}%}"     # repo name
 repopathcolor="%{%F{037}%}" # repo path
 
@@ -52,7 +52,7 @@ zstyle ':vcs_info:*' unstagedstr $unstagedstr
 zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b${rs}%c%u"
 
 
-# precmd - only do vcs prompt work when needed
+# precmd - vcs replaces normal prompt if available
 precmd() {
     vcs_info
     if [[ ! -n ${vcs_info_msg_0_} ]]; then
