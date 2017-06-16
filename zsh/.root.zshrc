@@ -25,7 +25,7 @@ WATCH="all"
 WATCHFMT="%D %T %b%n%b %a %l from %m"
 
 # exports
-export PATH="/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 export MANPATH="/usr/share/man"
 export TMP="$TMP"
 export TEMP="$TMP"
