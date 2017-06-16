@@ -17,7 +17,7 @@ Xft.rgba:               rgb
 
 !-- terminals
 xterm*termName:         xterm-256color
-xterm*faceName:         terminus:pixelsize=8
+xterm*faceName:         terminus:pixelsize=14
 xterm*utf8:             2
 xterm*saveLines:        1024
 xterm*loginShell:       true
@@ -32,8 +32,8 @@ URxvt.depth:            24
 URxvt*fading:           0
 URxvt*blurRadius:       0
 URxvt.scrollBar:        off
-URxvt.font:             xft:PragmataPro:size=8:style=Regular
-URxvt.boldFont:         xft:PragmataPro:size=8:style=Regular
+URxvt.font:             xft:PragmataPro:size=14:style=Regular
+URxvt.boldFont:         xft:PragmataPro:size=14:style=Regular
 URxvt.letterSpace:      0
 URxvt.saveLines:        2048
 URxvt*visualBell:       false
