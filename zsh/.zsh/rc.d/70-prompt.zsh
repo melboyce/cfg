@@ -15,7 +15,7 @@ stagedcolor="%{%F{070}%}"   # staged change icon
 unstagedcolor="%{%F{202}%}" # unstaged change icon
 repocolor="%{%F{190}%}"     # repo name
 repopathcolor="%{%F{081}%}" # repo path
-hostcolor="%{%F{148}%}"
+hostcolor="%{%F{190}%}"
 
 
 # user/host/path
