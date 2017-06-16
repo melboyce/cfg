@@ -11,28 +11,11 @@ sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
 vcsiconcolor="%{%F{250}%}"  # vcs icon
 branchcolor="%{%F{171}%}"   # vcs branch
-stagedcolor="%{%F{029}%}"   # staged change icon
-unstagedcolor="%{%F{029}%}" # unstaged change icon
+stagedcolor="%{%F{070}%}"   # staged change icon
+unstagedcolor="%{%F{202}%}" # unstaged change icon
 repocolor="%{%F{025}%}"     # repo name
 repopathcolor="%{%F{037}%}" # repo path
-
-case $HOST in
-    anvil)
-        hostcolor="%{%F{116}%}"
-        hostprompt="${hostcolor}%m${rs}";;
-
-    rivet)
-        hostcolor="%{%F{226}%}"
-        hostprompt="$hostcolor"`printf "\uf109 "`"$rs";;
-
-    hammer)
-        hostcolor="%{%F{201}%}"
-        hostprompt="${hostcolor}%m${rs}";;
-
-    *)
-        hostcolor="%{%F{226}%}"
-        hostprompt="${hostcolor}%m${rs}";;
-esac
+hostcolor="%{%F{148}%}"
 
 
 # user/host/path
@@ -56,6 +39,7 @@ zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcol
 precmd() {
     vcs_info
     if [[ ! -n ${vcs_info_msg_0_} ]]; then
+        hostprompt="$hostcolor"`cat $HOME/.zsh/prompt-icon`"$rs"
         PS1='${userprompt}${hostprompt} ${pathprompt} '
     else
         PS1='${vcs_info_msg_0_} '
