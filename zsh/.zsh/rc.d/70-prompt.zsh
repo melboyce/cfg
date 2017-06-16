@@ -9,12 +9,12 @@ pathcolor="%{%F{069}%}"     # color of the path
 usercolor="%{%F{160}%}"     # if a username is displayed, it is this color
 sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
-vcsiconcolor="%{%F{250}%}"  # vcs icon
-branchcolor="%{%F{171}%}"   # vcs branch
+vcsiconcolor="%{%F{231}%}"  # vcs icon
+branchcolor="%{%F{231}%}"   # vcs branch
 stagedcolor="%{%F{070}%}"   # staged change icon
 unstagedcolor="%{%F{202}%}" # unstaged change icon
-repocolor="%{%F{025}%}"     # repo name
-repopathcolor="%{%F{037}%}" # repo path
+repocolor="%{%F{190}%}"     # repo name
+repopathcolor="%{%F{081}%}" # repo path
 hostcolor="%{%F{148}%}"
 
 
