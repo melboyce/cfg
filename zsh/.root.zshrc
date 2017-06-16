@@ -12,9 +12,6 @@ mkdir -p /root/tmp
 bindkey -e  # e=emacs v=vi
 stty -ixon  # no flow-control
 
-# vars local to this script
-hostname=`hostname`
-
 # params
 TMP=/root/tmp
 DIRSTACKSIZE=0
