@@ -10,7 +10,7 @@ usercolor="%{%F{160}%}"     # if a username is displayed, it is this color
 sepcolor="%{%F{235}%}"      # color of '@' in 'user@host'
 exitcolor="%{%F{196}%}"     # fg color for exit code if non-zero
 vcsiconcolor="%{%F{231}%}"  # vcs icon
-branchcolor="%{%F{231}%}"   # vcs branch
+branchcolor="%{%K{236}%F{117}%}"   # vcs branch
 stagedcolor="%{%F{070}%}"   # staged change icon
 unstagedcolor="%{%F{202}%}" # unstaged change icon
 repocolor="%{%F{190}%}"     # repo name
@@ -25,14 +25,14 @@ pathprompt="${pathcolor}%4(c:...:)%3c${rs}"
 
 
 # vcs bits
-stagedstr="${stagedcolor}  ${rs}"
-unstagedstr="${unstagedcolor}  ${rs}"
+stagedstr="${stagedcolor}  "
+unstagedstr="${unstagedcolor}  "
 zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr $stagedstr
 zstyle ':vcs_info:*' unstagedstr $unstagedstr
-zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b${rs}%c%u"
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
 
 
 # precmd - vcs replaces normal prompt if available
