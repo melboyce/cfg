@@ -28,3 +28,6 @@ export TIMEZONE=$TZ
 # coreutils
 export VERSION_CONTROL="off"
 export BLOCK_SIZE="human-readable"
+
+# local exports
+[[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
