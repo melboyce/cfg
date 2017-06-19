@@ -1,0 +1,9 @@
+#!/bin/bash
+
+hash xset 2>/dev/null || { echo "no xset bin found"; exit 1; }
+hash xmodmap 2>/dev/null || { echo "no xmodmap bin found"; exit 2; }
+
+xset r rate 200 50
+xset -b
+xmodmap $HOME/.Xmodmap
+xbindkeys
