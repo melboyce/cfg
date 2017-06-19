@@ -21,7 +21,7 @@ xrdb -load $HOME/.Xresources
 # daemons etc
 numlockx &
 xautolock -time 10 -locker slock &
-$HOME/bin/trackpad-setup 2>/dev/null
+$HOME/bin/pointer-setup 2>/dev/null
 
 
 # start the terminal multiplexer
