@@ -15,6 +15,8 @@ col_tag="#5aa"
 col_tag_active="#d28"
 col_tag_urgent="#d28"
 col_icon="#9e0"
+col_icon_2="#5be"
+col_icon_3="#e09"
 col_data="#ed3"
 col_dull="#555"
 
@@ -72,6 +74,7 @@ while true; do
         wifi)  { wifi_ssid="${event[1]}"; wifi_pc="${event[2]}"; };;
         temp)  { temp_val="${event[1]}"; temp_idx="${event[2]}"; };;
         load)  { load_avg="${event[1]}"; };;
+        alrt)  { alrt="${event[1]}"; };;
         *)     ;;
     esac
 
@@ -110,8 +113,8 @@ while true; do
     done
 
     # wifi
-    o_wifi="%{F${col_icon}}$icon_wifi %{F-}$wifi_ssid $wifi_pc%"
-    [[ "$wifi_ssid" == "-" ]] && o_wifi="%{F${col_dull}}$icon_wifi_down %{F-}airgapped"
+    o_wifi="%{F${col_icon}}$icon_wifi %{F-}$wifi_pc%"
+    [[ "$wifi_ssid" == "-" ]] && o_wifi="%{F${col_dull}}$icon_wifi_down %{F-}"
 
     # load
     o_load="%{F${col_icon}}$icon_load %{F-}$load_avg"
@@ -137,19 +140,23 @@ while true; do
         "3") icon_batt="\uf241";;
         "4") icon_batt="\uf240";;
     esac
-    [[ "$batt_chg" -eq "1" ]] && o_batt+="%{F${col_icon}}$icon_batt_chg "
+    [[ "$batt_chg" -eq "1" ]] && o_batt+="%{F${col_data}}$icon_batt_chg "
     o_batt+="%{F${col_icon}}$icon_batt %{F-}$batt_pc%"
 
     # datetime
     o_date="%{F${col_icon}}$icon_date %{F-}"
     o_date+="$date_ymd%{F${col_data}} $date_hms"
 
+    # alrt
+    o_alrt="%{F-}%{B-}${alrt}%{F-}%{B-}"
+
     # locker
     o_lock="%{A:slock:}%{F${col_dull}}\uf023%{F-}%{A}"
 
     # packs
-    o_left="${o_wifi}${ui_sep}${o_load}"
-    o_right="${o_temp}${ui_sep}${o_batt}${ui_sep}${o_date} ${o_lock}"
+    o_left="${o_tags}"
+    o_cent="${o_alrt}"
+    o_right="${o_load}${ui_sep}${o_temp}${ui_sep}${o_batt}${ui_sep}${o_wifi}${ui_sep}${o_date} ${o_lock}"
 
-    echo -e "%{l}$o_left%{c}$o_tags%{r}$o_right"
+    echo -e "%{l}$o_left%{c}$o_cent%{r}$o_right"
 done <$fifo 2>/dev/null | lemonbar -f "$font" -f "Font Awesome:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
