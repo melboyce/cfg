@@ -32,7 +32,7 @@ icon_book="\uf02d"
 
 # widget icons
 icon_date="\uf017"
-icon_wifi="\uf0ac"
+icon_wifi="\uf1eb"
 icon_wifi_down="\uf132"
 icon_batt="\uf059"
 icon_batt_chg="\uf0e7"
