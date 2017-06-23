@@ -29,6 +29,8 @@ icon_urgent="\uf0f3"
 icon_term="\uf120"
 icon_web="\uf0c2"
 icon_book="\uf02d"
+icon_misc="\uf1e2"
+icon_sys="\uf0e4"
 
 # widget icons
 icon_date="\uf017"
@@ -95,19 +97,19 @@ while true; do
         esac
         tagicon="$icon_empty_tag"
         $empty || tagicon="$icon_tag"
+        case "$tagname" in
+            t?) { tagicon="$icon_term"; tagtext="PROG"; };;
+            w)  { tagicon="$icon_web"; tagtext="NETW";  };;
+            b)  { tagicon="$icon_book"; tagtext="BOOK"; };;
+            m)  { tagicon="$icon_misc"; tagtext="MISC"; };;
+            s)  { tagicon="$icon_sys"; tagtext="SYS ";  };;
+        esac
         $thismonitor && $focused && {
-            o_tags+="%{B${col_tag_active}}%{F#fff}"
-            tagicon="$icon_focused"
+            o_tags+="%{B${col_tag_active}}%{F#fff} $tagtext"
         }
         $othermonitor && $focused && {
-            o_tags+="%{B${col_tag}}%{F#fff}"
-            tagicon="$icon_focused_om"
+            o_tags+="%{B${col_tag}}%{F#fff} $tagtext"
         }
-        case "$tagname" in
-            t?) tagicon="$icon_term";;
-            w)  tagicon="$icon_web";;
-            b)  tagicon="$icon_book";;
-        esac
         $urgent && { o_tags+="%{F${col_tag_urgent}}"; tagicon="$icon_urgent"; }
         o_tags+="%{A:herbstclient use $tagname:} $tagicon %{B-}%{F-}%{-u}%{A}"
     done
@@ -159,4 +161,4 @@ while true; do
     o_right="${o_load}${ui_sep}${o_temp}${ui_sep}${o_batt}${ui_sep}${o_wifi}${ui_sep}${o_date} ${o_lock}"
 
     echo -e "%{l}$o_left%{c}$o_cent%{r}$o_right"
-done <$fifo 2>/dev/null | lemonbar -f "$font" -f "Font Awesome:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
+done <$fifo 2>/dev/null | lemonbar -a 20 -f "$font" -f "Font Awesome:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash

@@ -31,6 +31,9 @@ map global user <ret> ':lint<ret>'
 map global user n ':lint-next<ret>'
 map global user b ':lint-prev<ret>'
 
+map global user z ':godlv-break-here'
+map global user x ':godlv-clear-breaks'
+
 map global user f '|fmt -w 80<ret>:echo -color LineNumberCursor [sel] | fmt -w 80<ret>'
 map global user s '|sort -bn<ret>:echo -color LineNumberCursor [sel] | sort -bn<ret>'
 
