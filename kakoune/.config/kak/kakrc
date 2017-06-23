@@ -3,15 +3,15 @@
 
 # ui_options
 colorscheme base16-ocean
-set-face Default rgb:bcbabe,rgb:102030
+set-face Default rgb:bcbabe,rgb:101520
 set-face PrimarySelection rgb:f050f0,rgb:000000
 set-face PrimaryCursor rgb:f0f0f0,rgb:602060
 set-face SecondarySelection rgb:50f0f0,rgb:000000
 set-face SecondaryCursor rgb:000000,rgb:50f0f0
-set-face LineNumbers rgb:4f5b66,rgb:102030
+set-face LineNumbers rgb:4f5b66,rgb:101520
 set-face LineNumberCursor rgb:ebcb8b,rgb:303030
-set-face BufferPadding rgb:65737e,rgb:102030
-set global ui_options ncurses_enable_mouse=false:ncurses_assistant=cat:ncurses_set_title=false
+set-face BufferPadding rgb:65737e,rgb:101520
+set global ui_options ncurses_enable_mouse=false:ncurses_assistant=dilbert:ncurses_set_title=false
 
 
 # global options
@@ -77,10 +77,12 @@ hook global WinSetOption filetype=go %{
 hook global WinSetOption filetype=sh %{
     set window formatcmd 'shfmt -i 4'
     set window lintcmd 'shellcheck -fgcc -Cnever'
+    lint-enable
 }
 hook global WinSetOption filetype=python %{
     set window formatcmd 'autopep8 -'
     set window lintcmd 'flake8 --format="%(path)s:%(row)d:%(col)d: error: %(text)s"'
+    lint-enable
 }
 hook global WinSetOption filetype=makefile %{
     set indentwidth 0
