@@ -45,6 +45,7 @@ ui_sep="%{F${col_bg}}..%{F-}"
 u_height=6  # underline height
 
 monitor=${1:-0}
+[[ $monitor -gt 0 ]] && { echo "no multihead :("; exit 1; }
 herbstclient pad "$monitor" 30
 fifo="/tmp/panel.fifo"
 
