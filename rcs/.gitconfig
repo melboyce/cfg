@@ -1,9 +1,9 @@
 [user]
-	email = weird@syngin.net
-	name = Mel Boyce
+    email = weird@syngin.net
+    name = Mel Boyce
 
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
 [alias]
     br = branch
