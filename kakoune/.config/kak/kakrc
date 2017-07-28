@@ -22,22 +22,25 @@ set global tabstop 4
 set global termcmd 'st -c kakoune -e sh -c'
 
 
+# bindings - global
+map global insert <backspace> '<a-;>:insert-backspace<ret>'
+
+
 # bindings - user
-map global user c ':comment-line<ret>'
-map global user q ':bp<ret>'
-map global user w ':bn<ret>'
-map global user = '<a-i>w:spell-replace<ret>'
-map global user <ret> ':lint<ret>'
-map global user n ':lint-next<ret>'
-map global user b ':lint-prev<ret>'
+map global user c ':comment-line<ret>' -docstring "comment toggle for line"
+map global user q ':bp<ret>' -docstring "buffer prev"
+map global user w ':bn<ret>' -docstring "buffer next"
+map global user = '<a-i>w:spell-replace<ret>' -docstring "spell-replace word"
 
-map global user z ':godlv-break-here'
-map global user x ':godlv-clear-breaks'
+map global user t 'hatch-terminal-x11<ret>' -docstring "terminal hatch"
 
-map global user f '|fmt -w 80<ret>:echo -color LineNumberCursor [sel] | fmt -w 80<ret>'
-map global user s '|sort -bn<ret>:echo -color LineNumberCursor [sel] | sort -bn<ret>'
+map global user z ':godlv-break-here' -docstring "dlv: add to break list"
+map global user x ':godlv-clear-breaks' -docstring "dlv: clear break list"
 
-map global user p '!xsel<ret>:echo -color LineNumberCursor [sel] += xsel<ret>'
+map global user f '|fmt -w 80<ret>' -docstring "fmt -w 80"
+map global user s '|sort -bn<ret>' -docstring "sort -bn"
+
+map global user p '!xsel<ret>' -docstring "xsel"
 
 
 # hooks - run-of-the-mill
@@ -52,18 +55,25 @@ hook global NormalKey <esc> %{ try %{
     rmhl dynregex_%reg{<slash>}
 }}
 hook global InsertChar \t %{
-    exec -draft -itersel h@
+    exec -draft h@
 }
-hook global InsertKey <backspace> %{ try %{
-    exec -draft hGh<a-k>\A\h+\Z<ret><lt>
-}}
+
+
+# funcs
+def -hidden insert-backspace %{
+    try %{
+        exec -draft -no-hooks h %opt{indentwidth}H <a-k>\A<space>+\Z<ret> d
+    } catch %{
+        exec <backspace>
+    }
+}
 
 
 # hooks - language-specific
 hook global WinSetOption filetype=go %{
-    set window formatcmd 'goimports'
     set window indentwidth 0
     set window lintcmd 'golint-kak'
+    set window formatcmd 'goimports'
     set window makecmd 'go build'
 
     lint-enable
@@ -72,15 +82,14 @@ hook global WinSetOption filetype=go %{
     hook buffer BufWritePre .* %{ go-format -use-goimports }
     hook buffer BufWritePost .* lint
 
-    map window user d ':go-doc-info<ret>'
+    map window user d ':go-doc-info<ret>' -docstring "go: get docs"
+    map window user j ':go-jump<ret>' -docstring "go: jump to def"
 }
 hook global WinSetOption filetype=sh %{
-    set window formatcmd 'shfmt -i 4'
     set window lintcmd 'shellcheck -fgcc -Cnever'
 
     lint-enable
 
-    hook buffer BufWritePre .* %{ format }
     hook buffer BufWritePost .* lint
 }
 hook global WinSetOption filetype=python %{
@@ -91,21 +100,6 @@ hook global WinSetOption filetype=python %{
 hook global WinSetOption filetype=makefile %{
     set indentwidth 0
 }
-
-
-# "ide"
-def ide %{
-    rename-client main
-    set global jumpclient main
-
-    new rename-client tools
-    set global toolsclient tools
-
-    new rename-client docs
-    set global docsclient docs
+hook global WinSetOption filetype=json %{
+    set indentwidth 2
 }
-
-
-# see: autoload/selection-persist.kak
-hook global BufWritePre .* %{ save-selection }
-map global normal <c-r> ':restore-selection<ret>'
