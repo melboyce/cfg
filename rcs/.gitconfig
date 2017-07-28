@@ -10,3 +10,6 @@
     ci = commit
     co = checkout
     st = status
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
