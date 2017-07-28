@@ -1,5 +1,10 @@
 # zshrc - aliases
 
+# TOP TEN
+# print -l -- ${(o)history%% *} | uniq -c | sort -nr | head -n10
+alias g=git
+alias k=kak
+
 # SYSTEM ADMINISTRATION
 # coreutils
 alias cp="cp --strip-trailing-slashes"
