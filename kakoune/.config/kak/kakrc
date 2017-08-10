@@ -3,21 +3,21 @@
 
 # ui_options
 colorscheme base16-ocean
-set-face Default rgb:bcbabe,rgb:101520
-set-face PrimarySelection rgb:f050f0,rgb:000000
-set-face PrimaryCursor rgb:f0f0f0,rgb:602060
+set-face Default            rgb:bcbabe,rgb:101520
+set-face PrimarySelection   rgb:f050f0,rgb:000000
+set-face PrimaryCursor      rgb:f0f0f0,rgb:602060
 set-face SecondarySelection rgb:50f0f0,rgb:000000
-set-face SecondaryCursor rgb:000000,rgb:50f0f0
-set-face LineNumbers rgb:4f5b66,rgb:101520
-set-face LineNumberCursor rgb:ebcb8b,rgb:303030
-set-face BufferPadding rgb:65737e,rgb:101520
+set-face SecondaryCursor    rgb:000000,rgb:50f0f0
+set-face LineNumbers        rgb:4f5b66,rgb:101520
+set-face LineNumberCursor   rgb:ebcb8b,rgb:303030
+set-face BufferPadding      rgb:65737e,rgb:101520
 set global ui_options ncurses_enable_mouse=false:ncurses_assistant=dilbert:ncurses_set_title=false
 
 
 # global options
 set global autoreload ask
 set global indentwidth 4
-set global scrolloff 1,5
+set global scrolloff 5,1
 set global tabstop 4
 set global termcmd 'st -c kakoune -e sh -c'
 

@@ -6,6 +6,7 @@ export MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/man"
 export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
+export TMPPREFIX="$TMP/"
 
 # program associations
 export EDITOR="kak"
