@@ -17,7 +17,7 @@ set global ui_options ncurses_enable_mouse=false:ncurses_assistant=dilbert:ncurs
 # global options
 set global autoreload ask
 set global indentwidth 4
-set global scrolloff 5,1
+set global scrolloff 200,1  # center
 set global tabstop 4
 set global termcmd 'st -c kakoune -e sh -c'
 
