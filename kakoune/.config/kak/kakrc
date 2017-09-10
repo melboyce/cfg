@@ -17,7 +17,7 @@ set global ui_options ncurses_enable_mouse=false:ncurses_assistant=dilbert:ncurs
 # global options
 set global autoreload ask
 set global indentwidth 4
-set global scrolloff 200,1  # center
+set global scrolloff 20,1  # center
 set global tabstop 4
 set global termcmd 'st -c kakoune -e sh -c'
 
@@ -48,9 +48,6 @@ hook global WinCreate .* %{
     addhl number_lines -relative -hlcursor -separator " | "
     addhl show_matching
 }
-hook global NormalKey [/?*nN]|<a-[/?*nN]> %{ try %{
-    addhl dynregex '%reg{/}' 0:Search
-}}
 hook global NormalKey <esc> %{ try %{
     rmhl dynregex_%reg{<slash>}
 }}
@@ -66,6 +63,13 @@ def -hidden insert-backspace %{
     } catch %{
         exec <backspace>
     }
+}
+def ide %{
+    rename-client main
+    set global jumpclient main
+    new rename-client tools
+    set global toolsclient tools
+    set global docsclient tools
 }
 
 
