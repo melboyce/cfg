@@ -45,8 +45,8 @@ map global user p '!xsel<ret>' -docstring "xsel"
 
 # hooks - run-of-the-mill
 hook global WinCreate .* %{
-    addhl number_lines -relative -hlcursor -separator " | "
-    addhl show_matching
+    addhl window number_lines -relative -hlcursor -separator " ┤ "
+    addhl window show_matching
 }
 hook global NormalKey <esc> %{ try %{
     rmhl dynregex_%reg{<slash>}
@@ -99,12 +99,21 @@ hook global WinSetOption filetype=sh %{
 }
 hook global WinSetOption filetype=python %{
     set window formatcmd 'autopep8 -'
-    set window lintcmd 'flake8 --format="%(path)s:%(row)d:%(col)d: error: %(text)s"'
+    set window lintcmd 'flake8'
     lint-enable
+
+    hook buffer BufWritePre .* format
+    hook buffer BufWritePost .* lint
 }
 hook global WinSetOption filetype=makefile %{
-    set indentwidth 0
+    set window indentwidth 0
 }
 hook global WinSetOption filetype=json %{
-    set indentwidth 2
+    set window indentwidth 2
+}
+hook global WinSetOption filetype=yaml %{
+    lint-enable
+    set window indentwidth 2
+    set window lintcmd 'yamllint -f parsable'
+    hook buffer BufWritePost .* lint
 }

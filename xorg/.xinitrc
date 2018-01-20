@@ -25,4 +25,4 @@ $HOME/bin/pointer-setup 2>/dev/null
 
 
 # start the terminal multiplexer
-dbus-launch --exit-with-session herbstluftwm
+herbstluftwm

@@ -137,11 +137,11 @@ while true; do
     # battery
     o_batt=""
     case "$batt_idx" in
-        "0") icon_batt="\uf244";;
-        "1") icon_batt="\uf243";;
-        "2") icon_batt="\uf242";;
-        "3") icon_batt="\uf241";;
-        "4") icon_batt="\uf240";;
+        "1") icon_batt="\uf244";;
+        "2") icon_batt="\uf243";;
+        "3") icon_batt="\uf242";;
+        "4") icon_batt="\uf241";;
+        "5") icon_batt="\uf240";;
     esac
     [[ "$batt_chg" -eq "1" ]] && o_batt+="%{F${col_data}}$icon_batt_chg "
     o_batt+="%{F${col_icon}}$icon_batt %{F-}$batt_pc%"
