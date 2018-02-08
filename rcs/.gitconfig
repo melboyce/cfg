@@ -5,6 +5,9 @@
 [core]
     excludesfile = ~/.gitignore
 
+[pager]
+	branch = false
+
 [alias]
     br = branch
     ci = commit
