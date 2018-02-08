@@ -102,7 +102,7 @@ hook global WinSetOption filetype=python %{
     set window lintcmd 'flake8'
     lint-enable
 
-    hook buffer BufWritePre .* format
+    #hook buffer BufWritePre .* format
     hook buffer BufWritePost .* lint
 }
 hook global WinSetOption filetype=makefile %{
