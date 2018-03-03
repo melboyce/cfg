@@ -13,7 +13,7 @@ export EDITOR="kak"
 export MOST_EDITOR="kak %s +%d"
 export SUDO_EDITOR="nvim -Z"  # no shell commands, no suspend (not sure if neovim disables suspend)
 export VISUAL="kak"
-export BROWSER="/usr/bin/chromium"
+export BROWSER="/usr/bin/firefox"
 xdpyinfo >/dev/null 2>&1 || export BROWSER="/usr/bin/lynx"
 
 # program options
