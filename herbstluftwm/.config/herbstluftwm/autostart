@@ -63,11 +63,8 @@ hc keybind $mod-Right         split right 0.5
 hc keybind $mod-Control-space split explode
 hc keybind $mod-F7            spawn ~/bin/herb/splitter ide
 hc keybind $mod-F8            spawn ~/bin/herb/splitter 02
-hc keybind $mod-Shift-F8      spawn ~/bin/herb/splitter 02 "urxvt -sh 30"
 hc keybind $mod-F9            spawn ~/bin/herb/splitter l2
-hc keybind $mod-Shift-F9      spawn ~/bin/herb/splitter l2 "urxvt -sh 30"
 hc keybind $mod-F10           spawn ~/bin/herb/splitter r2
-hc keybind $mod-Shift-F10     spawn ~/bin/herb/splitter r2 "urxvt -sh 30"
 
 # layouting
 hc keybind $mod-x         remove
