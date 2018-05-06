@@ -7,11 +7,13 @@ hc() { herbstclient "$@"; }
 mod=Mod4
 resizestep=0.05
 term=st
+docterm='st -f "PragmataPro:size=14"'
 launcher1="rofi -show run"
 launcher2="rofi -show ssh"
 locker=slock
 
 hc emit_hook reload
+# shellcheck disable=SC1090
 [[ -f ~/.fehbg ]] && source ~/.fehbg
 
 # keybindings
@@ -19,14 +21,13 @@ hc keyunbind --all
 
 # tags
 tagnames=(m s w t1 t2 b)
-hc rename default ${tagnames[0]} 2>/dev/null || true
-for i in ${!tagnames[@]}; do
-    key=$(( $i + 1 ))
-    tagname=${tagnames[$i]}
-    hc add $tagname
-    if (( $key < 10 )); then
-        hc keybind $mod-$key       use_index $i
-        hc keybind $mod-Shift-$key move_index $i
+hc rename default "${tagnames[0]}" 2>/dev/null || true
+for i in "${!tagnames[@]}"; do
+    key=$((i+1))
+    hc add "${tagnames[$i]}"
+    if ((key<10)); then
+        hc keybind "$mod-$key" use_index "$i"
+        hc keybind "$mod-Shift-$key" move_index "$i"
     fi
 done
 
@@ -78,17 +79,17 @@ hc keybind $mod-Home      rotate
 
 # spawns
 hc keybind $mod-Return spawn $term
-hc keybind $mod-Shift-Return spawn urxvt -tr -sh 30
+hc keybind $mod-Shift-Return spawn $docterm
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
 hc keybind $mod-space spawn $launcher1
 hc keybind $mod-Shift-space spawn $launcher2
 hc keybind $mod-F11 spawn $locker
 
 # chains
-hc keybind $mod-Shift-Left  chain , split left 0.5 , focus left , spawn $term
-hc keybind $mod-Shift-Down  chain , split bottom 0.5 , focus down , spawn $term
-hc keybind $mod-Shift-Up    chain , split top 0.5 , focus up , spawn $term
-hc keybind $mod-Shift-Right chain , split right 0.5 , focus right , spawn $term
+hc keybind $mod-Shift-Left  chain , split left 0.5 , focus left , spawn "$term"
+hc keybind $mod-Shift-Down  chain , split bottom 0.5 , focus down , spawn "$term"
+hc keybind $mod-Shift-Up    chain , split top 0.5 , focus up , spawn "$term"
+hc keybind $mod-Shift-Right chain , split right 0.5 , focus right , spawn "$term"
 
 # cycling
 hc keybind $mod-period use_index +1 --skip-visible
@@ -153,13 +154,13 @@ hc unlock
 
 # panel(s) and monitor focus keybinds
 panel=~/bin/herb/np.sh
-for m in `herbstclient list_monitors | cut -d: -f1`; do
-    "$panel" $m &
-    key=$(( $m + 5 ))
-	hc keybind $mod-F${key} focus_monitor $m
+for m in $(herbstclient list_monitors | cut -d: -f1); do
+    "$panel" "$m" &
+    key=$((m+5))
+	hc keybind "$mod-F${key}" focus_monitor "$m"
 done
 
 
 # local extras
-lcfg=~/.config/herbstluftwm/`hostname`
+lcfg=~/.config/herbstluftwm/$(hostname)
 [[ -f $lcfg ]] && $lcfg $mod
