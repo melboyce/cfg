@@ -1,1 +1,0 @@
-/home/mel/r/inst/kakoune-extra/powerline.kak
