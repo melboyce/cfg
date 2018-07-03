@@ -14,5 +14,5 @@
     co = checkout
     st = status
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+[credential]
+	helper = myob -debug
