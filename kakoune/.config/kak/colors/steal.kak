@@ -24,7 +24,7 @@ set-face global list rgb:dedede,default
 set-face global Default rgb:f0f9ff,rgb:000e14
 set-face global PrimarySelection rgb:000000,rgb:45c485
 set-face global SecondarySelection rgb:121212,rgb:3f8d66
-set-face global PrimaryCursor rgb:000000,rgb:ffffff+b
+set-face global PrimaryCursor rgb:000000,rgb:ffe97f
 set-face global SecondaryCursor rgb:121212,rgb:45c485+b
 set-face global MatchingChar default,rgb:333333
 set-face global Search default,rgb:333333
