@@ -1,1 +1,0 @@
-/home/mel/r/inst/kakoune-extra/hatch_terminal.kak

@@ -1,0 +1,1 @@
+/usr/local/share/kak/rc/extra/go-tools.kak

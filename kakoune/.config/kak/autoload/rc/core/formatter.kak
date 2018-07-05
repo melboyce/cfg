@@ -1,0 +1,1 @@
+/usr/local/share/kak/rc/core/formatter.kak

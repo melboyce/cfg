@@ -1,1 +1,0 @@
-/home/mel/r/inst/kakoune-extra/selectsave.kak
