@@ -11,8 +11,8 @@ set-face global comment rgb:5b7786,default
 set-face global meta rgb:878787,default
 set-face global builtin default+b
 
-set-face global title rgb:ffffff,default+b
-set-face global header rgb:ffffff,default
+set-face global title rgb:ffffff,default+u
+set-face global header rgb:ffffff,default+u
 set-face global bold rgb:ffffff,default+b
 set-face global italic rgb:ededed,default+i
 set-face global mono rgb:cccccc,rgb:212121

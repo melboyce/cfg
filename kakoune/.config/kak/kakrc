@@ -16,7 +16,7 @@ colorscheme steal
 
 
 # globals
-set global termcmd 'kitty'
+set global termcmd 'st -c kakoune -e sh -c'
 
 
 # user
@@ -35,7 +35,10 @@ map global user P '!xsel -ob<ret>' -docstring 'insert xsel clipboard'
 
 
 # hooks
-hook global WinCreate .* %{ add-highlighter window/ number_lines -hlcursor -separator ' | ' }
+hook global WinCreate .* %{
+    add-highlighter window/ number-lines -hlcursor -separator ' | '
+    add-highlighter window/ show-matching
+}
 hook global NormalKey y|d|c %{ nop %sh{ printf %s "$kak_reg_dquote" | xsel -ib }}
 hook global InsertChar \t  %{ exec -draft h@ } # convert tabs to spaces
 
@@ -48,12 +51,12 @@ hook global WinSetOption filetype=go %{
     set window makecmd 'vgo build'
 
     lint-enable
-    go-enable-autocomplete
+    #go-enable-autocomplete
 
     hook buffer BufWritePre .* %{ go-format -use-goimports }
     hook buffer BufWritePost .* lint
-    hook buffer user d ':go-doc-info<ret>' -docstring 'go - show documentation'
-    hook buffer user j ':go-jump<ret>' -docstring 'go - jump to definition'
+    map buffer user d ':go-doc-info<ret>' -docstring 'go - show documentation'
+    map buffer user j ':go-jump<ret>' -docstring 'go - jump to definition'
 }
 
 ## shell
@@ -72,6 +75,8 @@ hook global WinSetOption filetype=python %{
 
 ## yaml
 hook global WinSetOption filetype=yaml %{
+    set window indentwidth 2
+    set window tabstop 2
     set window lintcmd 'yamllint -f parsable'
     lint-enable
     hook buffer BufWritePost .* lint
