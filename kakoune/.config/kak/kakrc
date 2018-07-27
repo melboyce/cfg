@@ -26,6 +26,7 @@ map global user b ':bn<ret>' -docstring 'next buffer'
 map global user B ':bp<ret>' -docstring 'previous buffer'
 map global user l ':lint-next-error<ret>' -docstring 'next lint error'
 map global user L ':lint-previous-error<ret>' -docstring 'previous lint error'
+map global user q ':delete-buffer<ret>' -docstring 'delete buffer'
 
 ## external commands
 map global user f '|fmt -w 80<ret>' -docstring '|fmt -w 80'
@@ -48,7 +49,7 @@ hook global WinSetOption filetype=go %{
     set window tabstop 8
     set window lintcmd 'sync; golint-kak' # TODO
     set window formatcmd 'goimports'
-    set window makecmd 'vgo build'
+    set window makecmd 'vgo build -x'
 
     lint-enable
     #go-enable-autocomplete
