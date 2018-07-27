@@ -1,4 +1,4 @@
 # zshrc - hashdirs
 
 # myob
-hash -d dnp="$HOME/r/myob/dnp"
+hash -d dnp="$HOME/r/dnp"

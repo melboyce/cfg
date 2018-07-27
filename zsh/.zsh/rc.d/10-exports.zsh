@@ -21,6 +21,7 @@ export GREP_COLOR=31
 export PAGER="most"
 export PS_FORMAT="pid,user,group,nice,pri,psr,ppid,start,rss,stat,command"
 export S_COLORS="always"
+export NNN_USE_EDITOR=1
 
 # l10n
 export TZ="Australia/Melbourne"
