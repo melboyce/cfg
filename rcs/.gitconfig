@@ -15,4 +15,5 @@
     st = status
 
 [credential]
-	helper = myob -debug
+    helper = myob
+    helper = melbcc
