@@ -25,14 +25,14 @@ pathprompt="${pathcolor}%4(c:...:)%3c${rs}"
 
 
 # vcs bits
-stagedstr="${stagedcolor}  "
-unstagedstr="${unstagedcolor}  "
+stagedstr="${stagedcolor}  "
+unstagedstr="${unstagedcolor}  "
 zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr $stagedstr
 zstyle ':vcs_info:*' unstagedstr $unstagedstr
-zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
 
 
 # precmd - vcs replaces normal prompt if available
