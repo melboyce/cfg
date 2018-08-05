@@ -29,7 +29,7 @@ icon_urgent="\uf0f3"
 icon_term="\uf120"
 icon_web="\uf0c2"
 icon_book="\uf02d"
-icon_misc="\ufb8f"
+icon_misc="\ue29b"
 icon_sys="\uf0e4"
 
 # widget icons
