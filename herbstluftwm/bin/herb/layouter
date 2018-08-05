@@ -1,0 +1,63 @@
+#!/bin/bash
+
+hash herbstclient 2>/dev/null || { echo "missing herbstclient"; exit 1; }
+
+layout="$1"
+[[ "$1" == "" ]] && { echo "usage: $0 <layout>"; exit 64; }
+
+term=st
+hc=herbstclient
+
+
+spawnat() {
+    (
+        local id="$2-$BASHPID"
+        herbstclient rule once instance="$id" maxage=10 index="$1"
+        cmd=("$term" -n "$id")
+        [[ "$2" != "" ]] && cmd+=(-e "$2")
+        exec "${cmd[@]}"
+    ) &
+}
+
+
+case "$layout" in
+    "basic") # side-by-side
+        $hc split h .5
+        spawnat 00
+        spawnat 10
+        ;;
+    "sys") # htop, logs, terminal
+        $hc split h .5
+        $hc split v .15
+        spawnat 00 htop
+        spawnat 01 svlogtail
+        spawnat 10
+        ;;
+    "lefty") # 1 left, 50% right split
+        $hc split h .5
+        $hc focus r
+        $hc split v .5
+        spawnat 00
+        spawnat 10
+        spawnat 11
+        ;;
+    "righty") # opposite of lefty
+        $hc split h .5
+        $hc split v .5
+        spawnat 00
+        spawnat 01
+        spawnat 10
+        ;;
+    "irc") # 70/30 left, 20/60/20 right
+        $hc split h .5
+        $hc split v .7
+        $hc focus r
+        $hc split v .8
+        $hc split v .2
+        spawnat 00
+        spawnat 01 mocp
+        spawnat 10
+        spawnat 11
+        spawnat 101
+        ;;
+esac
