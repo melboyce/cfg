@@ -57,22 +57,24 @@ hc keybind $mod-Control-k resize up +$resizestep
 hc keybind $mod-Control-l resize right +$resizestep
 
 # splitting
-hc keybind $mod-Control-space split explode
-hc keybind $mod-F6            spawn ~/bin/herb/layouter basic
-hc keybind $mod-F7            spawn ~/bin/herb/layouter sys
-hc keybind $mod-F8            spawn ~/bin/herb/layouter lefty
-hc keybind $mod-F9            spawn ~/bin/herb/layouter righty
-hc keybind $mod-F10           spawn ~/bin/herb/layouter irc
+
+# layouts
+hc keybind $mod-F5  spawn ~/bin/herb/layouter basic
+hc keybind $mod-F6  spawn ~/bin/herb/layouter sys
+hc keybind $mod-F7  spawn ~/bin/herb/layouter lefty
+hc keybind $mod-F8  spawn ~/bin/herb/layouter righty
+hc keybind $mod-F9  spawn ~/bin/herb/layouter irc
 
 # layouting
-hc keybind $mod-x         remove
-hc keybind $mod-Shift-x   close_and_remove
-hc keybind $mod-s         floating toggle
-hc keybind $mod-f         fullscreen toggle
-hc keybind $mod-p         pseudotile toggle
-hc keybind $mod-Shift-Tab cycle_layout 1
-hc keybind $mod-Tab       cycle
-hc keybind $mod-Home      rotate
+hc keybind $mod-x             remove
+hc keybind $mod-Shift-x       close_and_remove
+hc keybind $mod-s             floating toggle
+hc keybind $mod-f             fullscreen toggle
+hc keybind $mod-p             pseudotile toggle
+hc keybind $mod-Shift-Tab     cycle_layout 1
+hc keybind $mod-Tab           cycle
+hc keybind $mod-Home          rotate
+hc keybind $mod-Control-space split explode
 
 # spawns
 hc keybind $mod-Return spawn $term
@@ -153,8 +155,7 @@ hc unlock
 panel=~/bin/herb/np.sh
 for m in $(herbstclient list_monitors | cut -d: -f1); do
     "$panel" "$m" &
-    key=$((m+5))
-	hc keybind "$mod-F${key}" focus_monitor "$m"
+	hc keybind "$mod-Alt-F$m" focus_monitor "$m"
 done
 
 
