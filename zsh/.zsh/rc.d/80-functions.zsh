@@ -18,3 +18,7 @@ clonemyob() {
     [[ "$1" == "" ]] && return
     git clone "git@github.com:MYOB-Technology/$1"
 }
+
+ad() {
+    myob-auth l | rg --colors 'match:fg:cyan' "${@:-.*}"
+}
