@@ -20,5 +20,6 @@ clonemyob() {
 }
 
 ad() {
+    # TODO detect username string
     myob-auth l | rg --colors 'match:fg:cyan' "${@:-.*}"
 }

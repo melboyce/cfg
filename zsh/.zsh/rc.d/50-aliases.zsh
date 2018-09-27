@@ -36,6 +36,10 @@ alias xi="sudo xbps-install"
 alias xq="sudo xbps-query"
 alias svst="sudo sv status /var/service/*"
 
+# aws
+alias ssmgp="aws ssm get-parameter --name"
+alias ssmpp="aws ssm put-parameter --name"
+
 # optionals
 [[ -x /usr/bin/xstow ]] && alias stow="xstow"
 
