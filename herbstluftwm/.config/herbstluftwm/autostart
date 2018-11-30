@@ -59,11 +59,11 @@ hc keybind $mod-Control-l resize right +$resizestep
 # splitting
 
 # layouts
-hc keybind $mod-F5  spawn ~/bin/herb/layouter basic
+hc keybind $mod-F5  spawn ~/bin/herb/layouter irc
 hc keybind $mod-F6  spawn ~/bin/herb/layouter sys
-hc keybind $mod-F7  spawn ~/bin/herb/layouter lefty
-hc keybind $mod-F8  spawn ~/bin/herb/layouter righty
-hc keybind $mod-F9  spawn ~/bin/herb/layouter irc
+hc keybind $mod-F7  spawn ~/bin/herb/layouter basic
+hc keybind $mod-F8  spawn ~/bin/herb/layouter lefty
+hc keybind $mod-F9  spawn ~/bin/herb/layouter righty
 
 # layouting
 hc keybind $mod-x             remove
