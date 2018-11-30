@@ -162,4 +162,4 @@ while true; do
     o_right="${o_load}${ui_sep}${o_temp}${ui_sep}${o_batt}${ui_sep}${o_wifi}${ui_sep}${o_date} ${o_lock}"
 
     echo -e "%{l}$o_left%{c}$o_cent%{r}$o_right"
-done <$fifo 2>/dev/null | lemonbar -a 20 -f "$font" -f "Font Awesome:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
+done <$fifo 2>/dev/null | lemonbar -a 20 -f "$font" -f "Font Awesome 5 Free:size=13" -u "$u_height" -B "$col_bg" -F "$col_fg" | bash
