@@ -31,8 +31,9 @@ map global user q ':delete-buffer<ret>' -docstring 'delete buffer'
 ## external commands
 map global user f '|fmt -w 80<ret>' -docstring '|fmt -w 80'
 map global user s '|sort -bn<ret>' -docstring '|sort -bn'
-map global user p '<a-!>xsel -ob<ret>' -docstring 'append xsel clipboard'
-map global user P '!xsel -ob<ret>' -docstring 'insert xsel clipboard'
+map global user p '<a-!>xsel -ob<ret>' -docstring 'append from xsel clipboard'
+map global user P '!xsel -ob<ret>' -docstring 'insert from xsel clipboard'
+map global user r '|xsel -ob<ret>' -docstring 'replace with xsel clipboard'
 
 
 # hooks
@@ -43,21 +44,26 @@ hook global WinCreate .* %{
 hook global NormalKey y|d|c %{ nop %sh{ printf %s "$kak_reg_dquote" | xsel -ib }}
 hook global InsertChar \t  %{ exec -draft h@ } # convert tabs to spaces
 
+
+# lsp
+eval %sh{kak-lsp --kakoune -s $kak_session}
+lsp-enable
+
+
+# filetypes
+
 ## go
 hook global WinSetOption filetype=go %{
     set window indentwidth 0
     set window tabstop 8
-    set window lintcmd 'sync; golint-kak' # TODO
+    set window lintcmd 'golint-kak'
     set window formatcmd 'goimports'
-    set window makecmd 'vgo build -x'
+    set window makecmd 'go build -x'
 
     lint-enable
-    #go-enable-autocomplete
 
     hook buffer BufWritePre .* %{ go-format -use-goimports }
     hook buffer BufWritePost .* lint
-    map buffer user d ':go-doc-info<ret>' -docstring 'go - show documentation'
-    map buffer user j ':go-jump<ret>' -docstring 'go - jump to definition'
 }
 
 ## shell
