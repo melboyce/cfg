@@ -56,8 +56,8 @@ lsp-enable
 hook global WinSetOption filetype=go %{
     set window indentwidth 0
     set window tabstop 8
-    set window lintcmd 'golint-kak'
-    set window formatcmd 'goimports'
+    set window lintcmd revive
+    set window formatcmd goimports
     set window makecmd 'go build -x'
 
     lint-enable
