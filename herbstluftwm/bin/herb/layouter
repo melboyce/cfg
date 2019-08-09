@@ -13,7 +13,7 @@ spawnat() {
     (
         local id="$2-$BASHPID"
         herbstclient rule once instance="$id" maxage=10 index="$1"
-        cmd=("$term" -n "$id")
+        cmd=("$term" -f "PragmataPro:size=14" -n "$id")
         [[ "$2" != "" ]] && cmd+=(-e "$2")
         exec "${cmd[@]}"
     ) &
@@ -29,9 +29,12 @@ case "$layout" in
     "sys") # htop, logs, terminal
         $hc split h .5
         $hc split v .15
+        $hc focus r
+        $hc split v .85
         spawnat 00 htop
         spawnat 01 svlogtail
         spawnat 10
+        spawnat 11
         ;;
     "lefty") # 1 left, 50% right split
         $hc split h .5

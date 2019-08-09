@@ -77,11 +77,11 @@ hc keybind $mod-Home          rotate
 hc keybind $mod-Control-space split explode
 
 # spawns
-hc keybind $mod-Return       spawn "$term"
-hc keybind $mod-Shift-Return spawn "$docterm"
+hc keybind $mod-Return       spawn $term
+hc keybind $mod-Shift-Return spawn $docterm
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
-hc keybind $mod-space        spawn "$launcher1"
-hc keybind $mod-Shift-space  spawn "$launcher2"
+hc keybind $mod-space        spawn $launcher1
+hc keybind $mod-Shift-space  spawn $launcher2
 hc keybind $mod-F11          spawn $locker
 
 # chains
