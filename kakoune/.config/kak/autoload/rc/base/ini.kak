@@ -1,1 +1,0 @@
-/usr/local/share/kak/rc/base/ini.kak

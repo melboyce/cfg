@@ -15,10 +15,6 @@ set global scrolloff 10,1
 colorscheme steal
 
 
-# globals
-set global termcmd 'st -c kakoune -e sh -c'
-
-
 # user
 map global user = '<a-i>w:spell-replace<ret>' -docstring 'spell replace word'
 map global user c ':comment-line<ret>' -docstring 'comment toggle selected lines'

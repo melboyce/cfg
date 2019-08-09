@@ -1,1 +1,0 @@
-/usr/local/share/kak/rc/core/man.kak

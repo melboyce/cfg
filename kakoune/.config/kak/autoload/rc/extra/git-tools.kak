@@ -1,1 +1,0 @@
-/usr/local/share/kak/rc/extra/git-tools.kak
