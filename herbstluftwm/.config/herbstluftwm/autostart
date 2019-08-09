@@ -6,8 +6,8 @@ hc() { herbstclient "$@"; }
 # vars
 mod=Mod4
 resizestep=0.05
-term=st
-docterm="st -f PragmataPro:size=14"
+term="st -f PragmataPro:size=14"
+docterm="st -f PragmataPro:size=16"
 launcher1="rofi -show run"
 launcher2="rofi -show ssh"
 locker=slock
@@ -77,18 +77,18 @@ hc keybind $mod-Home          rotate
 hc keybind $mod-Control-space split explode
 
 # spawns
-hc keybind $mod-Return spawn $term
-hc keybind $mod-Shift-Return spawn $docterm
+hc keybind $mod-Return       spawn "$term"
+hc keybind $mod-Shift-Return spawn "$docterm"
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
-hc keybind $mod-space spawn $launcher1
-hc keybind $mod-Shift-space spawn $launcher2
-hc keybind $mod-F11 spawn $locker
+hc keybind $mod-space        spawn "$launcher1"
+hc keybind $mod-Shift-space  spawn "$launcher2"
+hc keybind $mod-F11          spawn $locker
 
 # chains
-hc keybind $mod-Left  chain , split left 0.5 , focus left , spawn "$term"
-hc keybind $mod-Down  chain , split bottom 0.5 , focus down , spawn "$term"
-hc keybind $mod-Up    chain , split top 0.5 , focus up , spawn "$term"
-hc keybind $mod-Right chain , split right 0.5 , focus right , spawn "$term"
+hc keybind $mod-Left  chain , split left 0.5   , focus left  , spawn "$term"
+hc keybind $mod-Down  chain , split bottom 0.5 , focus down  , spawn "$term"
+hc keybind $mod-Up    chain , split top 0.5    , focus up    , spawn "$term"
+hc keybind $mod-Right chain , split right 0.5  , focus right , spawn "$term"
 
 # cycling
 hc keybind $mod-period use_index +1 --skip-visible
