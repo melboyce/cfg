@@ -40,7 +40,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "$stagedstr"
 zstyle ':vcs_info:*' unstagedstr "$unstagedstr"
-zstyle ':vcs_info:git*' formats "${vcsiconcolor}${vcsicon} ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}${vcsicon}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
 
 
 # precmd - vcs replaces normal prompt
