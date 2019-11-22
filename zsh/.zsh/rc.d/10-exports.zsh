@@ -1,7 +1,7 @@
 # zshrc - exports
 
 # paths
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
 export MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/man"
 export TMP="$HOME/tmp"
 export TEMP="$TMP"
