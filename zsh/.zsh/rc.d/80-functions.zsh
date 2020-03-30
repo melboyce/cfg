@@ -14,9 +14,9 @@ gdac() {
     git commit
 }
 
-clonemyob() {
+hubclone() {
     [[ "$1" == "" ]] && return
-    git clone "git@github.com:MYOB-Technology/$1"
+    git clone "git@github.com:$1"
 }
 
 ad() {
