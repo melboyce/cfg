@@ -7,17 +7,17 @@ prompt_icon_path="$HOME/.zsh/prompt-icon"
 # colors
 rs="%{%k%f%}"
 safe_username="mel"              # does not appear in prompt
-hostcolor="%{%F{117}%}"          # the color of the prompt-icon
-pathcolor="%{%F{069}%}"          # color of the path
+hostcolor="%{%F{167}%}"          # the color of the prompt-icon
+pathcolor="%{%F{066}%}"          # color of the path
 usercolor="%{%F{160}%}"          # color of username if displayed
 sepcolor="%{%F{235}%}"           # color of '@' in 'user@host'
 exitcolor="%{%K{232}%F{197}%}"   # color for exit code if non-zero
-vcsiconcolor="%{%F{218}%}"       # vcs icon color
-branchcolor="%{%K{236}%F{178}%}" # vcs branch color
-stagedcolor="%{%F{070}%}"        # vcs staged change icon
-unstagedcolor="%{%F{202}%}"      # vcs unstaged change icon
-repocolor="%{%F{190}%}"          # vcs repo name
-repopathcolor="%{%F{081}%}"      # vcs repo path
+vcsiconcolor="%{%F{175}%}"       # vcs icon color
+branchcolor="%{%K{237}%F{214}%}" # vcs branch color
+stagedcolor="%{%F{142}%}"        # vcs staged change icon
+unstagedcolor="%{%F{166}%}"      # vcs unstaged change icon
+repocolor="%{%F{108}%}"          # vcs repo name
+repopathcolor="%{%F{072}%}"      # vcs repo path
 
 # "icons"
 stagedicon=" "   # ready to commit
@@ -40,7 +40,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "$stagedstr"
 zstyle ':vcs_info:*' unstagedstr "$unstagedstr"
-zstyle ':vcs_info:git*' formats "${vcsiconcolor}${vcsicon}  ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}${vcsicon} ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
 
 
 # precmd - vcs replaces normal prompt
