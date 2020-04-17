@@ -9,31 +9,28 @@ export TMPDIR="$TMP"
 export TMPPREFIX="$TMP/"
 
 # program associations
-export EDITOR="kak"
+export EDITOR=kak
 export MOST_EDITOR="kak %s +%d"
 export SUDO_EDITOR="nvim -Z"  # no shell commands, no suspend (not sure if neovim disables suspend)
-export VISUAL="kak"
-export BROWSER="/usr/bin/firefox"
+export VISUAL=kak
+export BROWSER=/usr/bin/firefox
 xdpyinfo >/dev/null 2>&1 || export BROWSER="/usr/bin/lynx"
 
 # program options
 export GREP_COLOR=31
-export PAGER="most"
-export PS_FORMAT="pid,user,group,nice,pri,psr,ppid,start,rss,stat,command"
-export S_COLORS="always"
+export PAGER=most
+export PS_FORMAT=pid,user,group,nice,pri,psr,ppid,start,rss,stat,command
+export S_COLORS=always
 export NNN_USE_EDITOR=1
-export HUBR_DEFAULT_ORG="MYOB-Technology"
+export HUBR_DEFAULT_ORG=MYOB-Technology
 
 # l10n
-export TZ="Australia/Melbourne"
-export TIMEZONE=$TZ
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export TZ=Australia/Melbourne
+export TIMEZONE="$TZ"
 
 # coreutils
-export VERSION_CONTROL="off"
-export BLOCK_SIZE="human-readable"
+export VERSION_CONTROL=off
+export BLOCK_SIZE=human-readable
 
 # horseshit
 export XDG_DESKTOP_DIR="$HOME"
@@ -44,6 +41,10 @@ export XDG_PICTURES_DIR="$HOME/i"
 export XDG_PUBLICSHARE_DIR="$HOME/pub"
 export XDG_TEMPLATES_DIR="$HOME/tmpl"
 export XDG_VIDEOS_DIR="$HOME/vid"
+
+# aws :(
+export AWS_REGION=ap-southeast-2
+export AWS_DEFAULT_REGION=ap-southeast-2
 
 
 # local exports
