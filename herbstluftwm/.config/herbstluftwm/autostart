@@ -82,7 +82,7 @@ hc keybind $mod-Shift-Return spawn $docterm
 hc keybind $mod-Shift-Delete spawn ~/bin/herb/closeall
 hc keybind $mod-space        spawn $launcher1
 hc keybind $mod-Shift-space  spawn $launcher2
-hc keybind $mod-F11          spawn $locker
+hc keybind $mod-F12          spawn $locker
 
 # chains
 hc keybind $mod-Left  chain , split left 0.5   , focus left  , spawn "$term"
