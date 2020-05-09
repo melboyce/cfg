@@ -20,7 +20,8 @@ hc emit_hook reload
 hc keyunbind --all
 
 # tags
-tagnames=(m s w t1 t2 b)
+# music/audio  system  web  term1  term2  gui1  gui2
+tagnames=(m s w t1 t2 g1 g2)
 hc rename default "${tagnames[0]}" 2>/dev/null || true
 for i in "${!tagnames[@]}"; do
     key=$((i+1))
@@ -131,20 +132,9 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
-# gimp
-# TODO move this to a gimp-launch script that cleans up this shit
-#hc add gimp
-#hc load gimp '
-#(split horizontal:0.850000:0
-#(split horizontal:0.200000:1
-#(clients vertical:0)
-#(clients grid:0))
-#(clients vertical:0))
-#'
-#hc rule class=Gimp tag=gimp index=01 pseudotile=on
-#hc rule class=Gimp windowrole~'gimp-(image-window|toolbox|dock)' pseudotile=off
-#hc rule class=Gimp windowrole=gimp-toolbox focus=off index=00
-#hc rule class=Gimp windowrole=gimp-dock focus=off index=1
+
+# slack
+hc rule class=slack tag=g2 floating=on
 
 
 # finish up
