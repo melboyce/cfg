@@ -31,6 +31,8 @@ icon_web="\uf0c2"
 icon_book="\uf02d"
 icon_misc="\ue29b"
 icon_sys="\uf0e4"
+icon_gui1="\uf490"
+icon_gui2="\uf198"
 
 # widget icons
 icon_date="\uf017"
@@ -99,11 +101,13 @@ while true; do
         tagicon="$icon_empty_tag"
         $empty || tagicon="$icon_tag"
         case "$tagname" in
-            t?) { tagicon="$icon_term"; tagtext="PROG"; };;
-            w)  { tagicon="$icon_web"; tagtext="NETW";  };;
             b)  { tagicon="$icon_book"; tagtext="BOOK"; };;
+            g2) { tagicon="$icon_gui2"; tagtext="GUI2"; };;
+            g?) { tagicon="$icon_gui1"; tagtext="GUI1"; };;
             m)  { tagicon="$icon_misc"; tagtext="MISC"; };;
-            s)  { tagicon="$icon_sys"; tagtext="SYS ";  };;
+            s)  { tagicon="$icon_sys";  tagtext="SYS "; };;
+            t?) { tagicon="$icon_term"; tagtext="PROG"; };;
+            w)  { tagicon="$icon_web";  tagtext="NETW"; };;
         esac
         $thismonitor && $focused && {
             o_tags+="%{B${col_tag_active}}%{F#fff} $tagtext"
@@ -130,6 +134,7 @@ while true; do
         "2") icon_temp="\uf2c9";;
         "3") icon_temp="\uf2c8";;
         "4") icon_temp="\uf2c7";;
+        *)   icon_temp="\ufa0c";;
     esac
     [[ "$temp_idx" == "4" ]] && o_temp+="%{F${col_tag_urgent}}" || o_temp+="%{F${col_icon}}"
     o_temp+="$icon_temp %{F-}$temp_val°C"
