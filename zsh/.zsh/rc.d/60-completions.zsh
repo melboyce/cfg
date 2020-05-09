@@ -32,9 +32,12 @@ zstyle ':completion:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#) #([a-z]#)*=37=31=33"
 
 # ssh known hosts
-local knownhosts
-knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
-zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+[[ -f $HOME/.ssh/known_hosts ]] && {
+    local knownhosts
+    knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
+    zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+}
 
 # misc additional completers
-source $HOME/.local/bin/aws_zsh_completer.sh
+[[ -f $HOME/.local/bin/aws_zsh_completer.sh ]] \
+    && source $HOME/.local/bin/aws_zsh_completer.sh
