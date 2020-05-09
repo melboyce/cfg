@@ -7,7 +7,7 @@ hc() { herbstclient "$@"; }
 mod=Mod4
 resizestep=0.05
 term="st -f PragmataPro:size=14"
-docterm="st -f PragmataPro:size=16"
+docterm="st -f PragmataPro:size=24"
 launcher1="rofi -show run"
 launcher2="rofi -show ssh"
 locker=slock
