@@ -42,10 +42,6 @@ export XDG_PUBLICSHARE_DIR="$HOME/pub"
 export XDG_TEMPLATES_DIR="$HOME/tmpl"
 export XDG_VIDEOS_DIR="$HOME/vid"
 
-# aws :(
-export AWS_REGION=ap-southeast-2
-export AWS_DEFAULT_REGION=ap-southeast-2
-
 
 # local exports
 # shellcheck disable=SC1090
