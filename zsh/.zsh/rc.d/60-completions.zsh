@@ -37,10 +37,3 @@ zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#) #([a-z]#)*=
     knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
     zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
 }
-
-# awscli2
-[[ -f /usr/local/bin/aws_completer ]] && {
-    autoload bashcompinit
-    bashcompinit
-    complete -C '/usr/local/bin/aws_completer' aws
-}
