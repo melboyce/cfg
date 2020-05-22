@@ -135,6 +135,7 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 # slack
 hc rule class=slack tag=g2 floating=on
+hc rule class=Slack tag=g2 floating=on
 
 
 # finish up
