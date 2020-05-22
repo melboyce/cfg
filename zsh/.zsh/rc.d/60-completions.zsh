@@ -38,6 +38,9 @@ zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#) #([a-z]#)*=
     zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
 }
 
-# misc additional completers
-[[ -f $HOME/.local/bin/aws_zsh_completer.sh ]] \
-    && source $HOME/.local/bin/aws_zsh_completer.sh
+# awscli2
+[[ -f /usr/local/bin/aws_completer ]] && {
+    autoload bashcompinit
+    bashcompinit
+    complete -C '/usr/local/bin/aws_completer' aws
+}
