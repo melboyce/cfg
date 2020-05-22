@@ -37,8 +37,7 @@ alias xq="sudo xbps-query"
 alias svst="sudo sv status /var/service/*"
 
 # aws
-alias ssmgp="aws ssm get-parameter --name"
-alias ssmpp="aws ssm put-parameter --name"
+alias aws="aws --no-paginate"
 
 # optionals
 [[ -x /usr/bin/xstow ]] && alias stow="xstow"
