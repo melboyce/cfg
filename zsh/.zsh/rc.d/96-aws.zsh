@@ -7,3 +7,5 @@ export AWS_PAGER=""
 autoload bashcompinit
 bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
+
+alias aws='aws --cli-binary-format raw-in-base64-out'
