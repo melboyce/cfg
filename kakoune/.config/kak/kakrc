@@ -60,6 +60,9 @@ hook global WinSetOption filetype=go %{
 
     hook buffer BufWritePre .* %{ go-format -use-goimports }
     hook buffer BufWritePost .* lint
+
+    map window user j ':go-jump<ret>' -docstring 'go-tools: jump'
+    map window user d ':go-doc-info<ret>' -docstring 'go-tools: doc-info'
 }
 
 ## shell
@@ -67,6 +70,11 @@ hook global WinSetOption filetype=sh %{
     set window lintcmd 'shellcheck -fgcc -Cnever'
     lint-enable
     hook buffer BufWritePost .* lint
+}
+
+## markdown
+hook global WinSetOption filetype=markdown %{
+    add-highlighter global/ wrap
 }
 
 ## python
