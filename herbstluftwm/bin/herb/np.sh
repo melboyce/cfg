@@ -62,7 +62,7 @@ herbstclient --idle >$fifo &
 
 
 # system telemetry polling
-"$GOPATH/bin/hostess" >$fifo &
+hostess >$fifo &
 
 
 # bar
