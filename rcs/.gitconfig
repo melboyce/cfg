@@ -13,6 +13,7 @@
     br = branch
     ci = commit
     co = checkout
+    pp = !git pull && git push
     sh = show
     st = status
 
