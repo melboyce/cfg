@@ -10,6 +10,7 @@
 
 [alias]
     l  = "log --format='%n%n%C(yellow)%>(15,trunc)%h%C(cyan) %H%n%C(yellow)%>(15,trunc)%cr%C(cyan) %cD%n%C(yellow)%>(15,trunc)%cn%C(cyan) %ce%n%>(15)%C(white) %s%Creset' --numstat"
+    ls = log --format='%C(blue)%>(15,trunc)%cn %C(yellow)%h %C(reset)%s %C(red)%d'
     br = branch
     ci = commit
     co = checkout
