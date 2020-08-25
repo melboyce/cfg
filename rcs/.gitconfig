@@ -19,7 +19,8 @@
     st = status
 
 [credential]
-    helper = myob
+    helper = /home/mel/.local/bin/pass-git-helper
+    useHttpPath = true
 
 [pull]
     rebase = false
