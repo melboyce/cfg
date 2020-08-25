@@ -34,17 +34,19 @@ export TIMEZONE="$TZ"
 export VERSION_CONTROL=off
 export BLOCK_SIZE=human-readable
 
-# horseshit
+# gpg - added for pinentry-curses
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# xdg
 export XDG_DESKTOP_DIR="$HOME"
-export XDG_DOWNLOAD_DIR="$HOME/d"
 export XDG_DOCUMENTS_DIR="$HOME/w"
+export XDG_DOWNLOAD_DIR="$HOME/d"
 export XDG_MUSIC_DIR="$HOME/m"
 export XDG_PICTURES_DIR="$HOME/i"
+export XDG_RUNTIME_DIR="$HOME/run"
 export XDG_TEMPLATES_DIR="$HOME/x"
 export XDG_VIDEOS_DIR="$HOME/v"
-
-# wayland
-export XDG_RUNTIME_DIR="$HOME/run"
 
 
 # local exports
