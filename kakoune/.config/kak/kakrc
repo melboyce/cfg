@@ -17,6 +17,7 @@ colorscheme steal
 
 # user
 map global user = '<a-i>w:spell-replace<ret>' -docstring 'spell replace word'
+map global user ] ':spell-next<ret>' -docstring 'next spelling error'
 map global user c ':comment-line<ret>' -docstring 'comment toggle selected lines'
 map global user b ':bn<ret>' -docstring 'next buffer'
 map global user B ':bp<ret>' -docstring 'previous buffer'
@@ -72,6 +73,7 @@ hook global WinCreate .*\.sh %{
 ## markdown
 hook global WinCreate .*\.md %{
     add-highlighter global/ wrap
+    hook buffer BufWritePost .* spell
 }
 
 ## python
