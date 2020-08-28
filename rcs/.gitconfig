@@ -6,7 +6,7 @@
     excludesfile = ~/.gitignore
 
 [pager]
-	branch = false
+    branch = false
 
 [alias]
     l  = "log --format='%n%n%C(yellow)%>(15,trunc)%h%C(cyan) %H%n%C(yellow)%>(15,trunc)%cr%C(cyan) %cD%n%C(yellow)%>(15,trunc)%cn%C(cyan) %ce%n%>(15)%C(white) %s%Creset' --numstat"
