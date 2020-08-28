@@ -12,7 +12,7 @@ set global scrolloff 10,1
 
 
 # color
-colorscheme steal
+colorscheme palenight
 
 
 # user
