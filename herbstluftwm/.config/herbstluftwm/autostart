@@ -146,7 +146,7 @@ hc unlock
 panel=~/bin/herb/np.sh
 for m in $(herbstclient list_monitors | cut -d: -f1); do
     "$panel" "$m" &
-	hc keybind "$mod-Alt-F$m" focus_monitor "$m"
+    hc keybind "$mod-Alt-F$m" focus_monitor "$m"
 done
 
 
