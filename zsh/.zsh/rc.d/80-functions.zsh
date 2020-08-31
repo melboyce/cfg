@@ -15,8 +15,8 @@ gdac() {
 }
 
 hubclone() {
-    [[ "$1" == "" ]] && return
-    git clone "git@github.com:$1"
+    [[ "$1" == "" ]] && { echo "hubclone org/repo"; return; }
+    git clone "https://github.com/$1" || return
     cd ${1##*/} || true
 }
 
