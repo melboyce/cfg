@@ -2,6 +2,7 @@
 
 # TOP TEN
 # print -l -- ${(o)history%% *} | uniq -c | sort -nr | head -n10
+alias d=darcs
 alias g=git
 alias k=kak
 
@@ -44,6 +45,6 @@ alias aws="aws --no-paginate"
 
 
 # MISC
-alias d="docker"
+alias dr="docker"
 alias hc="herbstclient"
 alias fz="feh -Zd."
