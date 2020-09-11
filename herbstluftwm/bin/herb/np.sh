@@ -9,7 +9,7 @@
 # control vars
 font="PragmataPro:style=Regular:size=13"
 
-col_bg="#222"
+col_bg="#00222222"
 col_fg="#aaa"
 col_tag="#5aa"
 col_tag_active="#d28"
