@@ -20,10 +20,11 @@ repocolor="%{%F{108}%}"          # vcs repo name
 repopathcolor="%{%F{072}%}"      # vcs repo path
 
 # "icons"
-stagedicon=" "   # ready to commit
-unstagedicon=" " # ready to add
-vcsicon=" "      # in vcs directory
-exiticon=" "     # for non-zero exit code RPROMPT
+stagedicon=" "    # ready to commit
+unstagedicon=" "  # ready to add
+giticon=" "       # in git repo
+darcsicon=" "     # in darcs repo
+exiticon=" "      # for non-zero exit code RPROMPT
 
 
 # user/host/path
@@ -35,12 +36,13 @@ pathprompt="${pathcolor}%4(c:...:)%3c${rs}"
 # vcs bits
 stagedstr="$stagedcolor $stagedicon"
 unstagedstr="$unstagedcolor $unstagedicon"
-zstyle ':vcs_info:*' disable bzr cdv darcs mtn p4 svk tla
+zstyle ':vcs_info:*' disable bzr cdv mtn p4 svk tla
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "$stagedstr"
 zstyle ':vcs_info:*' unstagedstr "$unstagedstr"
-zstyle ':vcs_info:git*' formats "${vcsiconcolor}${vcsicon} ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
+zstyle ':vcs_info:git*' formats "${vcsiconcolor}${giticon} ${repocolor}%r${repopathcolor}/%S ${branchcolor}%b%c%u${rs}"
+zstyle ':vcs_info:darcs*' formats "${vcsiconcolor}${darcsicon} ${repocolor}%r${repopathcolor}/%S${rs}"
 
 
 # precmd - vcs replaces normal prompt
