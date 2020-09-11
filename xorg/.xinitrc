@@ -24,5 +24,9 @@ xautolock -time 10 -locker slock &
 $HOME/bin/pointer-setup 2>/dev/null
 
 
+# compositor
+hash picom 2>/dev/null && picom -b
+
+
 # start the terminal multiplexer
 herbstluftwm
