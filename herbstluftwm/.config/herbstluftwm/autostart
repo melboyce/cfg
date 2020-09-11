@@ -1,6 +1,8 @@
 #!/bin/bash
 # herbstluftwm - autostart
 
+hash mons 2>/dev/null && mons -e left
+
 hc() { herbstclient "$@"; }
 
 # vars
@@ -119,7 +121,7 @@ hc set frame_gap 10
 hc set frame_bg_transparent 1
 hc set frame_border_width 0
 hc set window_gap 1
-hc set window_border_width 3
+hc set window_border_width 2
 hc set window_border_active_color '#ed3'
 hc set window_border_normal_color '#777'
 hc set window_border_urgent_color '#e55'
@@ -138,16 +140,16 @@ hc rule class=slack tag=g2 floating=on
 hc rule class=Slack tag=g2 floating=on
 
 
-# finish up
-hc unlock
-
-
 # panel(s) and monitor focus keybinds
 panel=~/bin/herb/np.sh
 for m in $(herbstclient list_monitors | cut -d: -f1); do
     "$panel" "$m" &
     hc keybind "$mod-Alt-F$m" focus_monitor "$m"
 done
+
+
+# finish up
+hc unlock
 
 
 # local extras
