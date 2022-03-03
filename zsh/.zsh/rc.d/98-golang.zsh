@@ -2,4 +2,4 @@
 
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
-export GOPRIVATE=github.com/MYOB-Technology,github.com/myob-*
+export GOPRIVATE=github.com/littlepay,github.com/littlepay-*,gitlab.com/littlepay
