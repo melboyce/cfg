@@ -6,10 +6,6 @@ alias d=darcs
 alias g=git
 alias k=kak
 
-# SYSTEM ADMINISTRATION
-alias cp="cp --strip-trailing-slashes"
-alias mv="mv --strip-trailing-slashes"
-
 # tree - http://mama.indstate.edu/users/ice/tree/
 alias ldt="tree -pughCFd -L 1"
 alias ldtr="tree -pughCFd"
