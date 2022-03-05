@@ -42,7 +42,7 @@ hook global InsertChar \t %{ exec -draft h@ } # convert tabs to spaces
 
 
 # lsp
-# eval %sh{kak-lsp --kakoune -s $kak_session}
+eval %sh{kak-lsp --kakoune -s $kak_session}
 # lsp-enable
 
 
@@ -50,6 +50,8 @@ hook global InsertChar \t %{ exec -draft h@ } # convert tabs to spaces
 
 ## go
 hook global WinCreate .*\.go %{
+    lsp-enable-window
+
     hook buffer BufWritePre .* %{ go-format -use-goimports }
     hook buffer BufWritePost .* lint
 
