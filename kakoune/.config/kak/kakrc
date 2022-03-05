@@ -1,9 +1,8 @@
 # kakrc
 
 # init
-set global ui_options ncurses_assistant=cat
-set -add global ui_options ncurses_set_title=false
-set -add global ui_options ncurses_enable_mouse=false
+set -add global ui_options terminal_assistant=cat
+set -add global ui_options terminal_enable_mouse=false
 
 ## regular options
 set global indentwidth 4
