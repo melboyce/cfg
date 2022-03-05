@@ -27,9 +27,9 @@ map global user q ':delete-buffer<ret>' -docstring 'delete buffer'
 ## external commands
 map global user f '|fmt -w 80<ret>' -docstring '|fmt -w 80'
 map global user s '|sort -bn<ret>' -docstring '|sort -bn'
-map global user p '<a-!>xsel -ob<ret>' -docstring 'append from xsel clipboard'
-map global user P '!xsel -ob<ret>' -docstring 'insert from xsel clipboard'
-map global user r '|xsel -ob<ret>' -docstring 'replace with xsel clipboard'
+map global user p '<a-!>pbpaste<ret>' -docstring 'append from general clipboard'
+map global user P '!pbpaste<ret>' -docstring 'insert from general clipboard'
+map global user r '|pbpaste<ret>' -docstring 'replace with general clipboard'
 
 
 # hooks
@@ -61,8 +61,15 @@ hook global WinCreate .*\.go %{
     set window formatcmd goimports
     set window makecmd 'go build -x'
 
-    map window user j ':go-jump<ret>' -docstring 'go-tools: jump'
-    map window user d ':go-doc-info<ret>' -docstring 'go-tools: doc-info'
+    map window user , ':lsp-hover<ret>' -docstring 'show hover'
+    map window user e ':lsp-find-error<ret>:lsp-hover<ret>' -docstring 'find error'
+    map window user E ':lsp-find-error --previous<ret>:lsp-hover<ret>' -docstring 'find error (prev)'
+    map window user f ':lsp-next-function<ret>' -docstring 'next function'
+    map window user F ':lsp-previous-function<ret>' -docstring 'prev function'
+    map window user i ':lsp-incoming-calls<ret>' -docstring 'incoming calls'
+    map window user I ':lsp-outgoing-calls<ret>' -docstring 'outgoing calls'
+    map window user j ':lsp-definition<ret>' -docstring 'go to definition'
+    map window user n ':lsp-rename-prompt<ret>' -docstring 'rename symbol'
 }
 
 ## shell
