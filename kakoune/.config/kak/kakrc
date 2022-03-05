@@ -52,7 +52,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 hook global WinCreate .*\.go %{
     lsp-enable-window
 
-    hook buffer BufWritePre .* %{ go-format -use-goimports }
+    hook buffer BufWritePre .* format
     hook buffer BufWritePost .* lint
 
     set window indentwidth 0
