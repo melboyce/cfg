@@ -3,6 +3,7 @@
 # init
 set -add global ui_options terminal_assistant=cat
 set -add global ui_options terminal_enable_mouse=false
+map global insert <s-space> <space>
 
 ## regular options
 set global indentwidth 4
@@ -37,20 +38,19 @@ hook global WinCreate .* %{
     add-highlighter window/ number-lines -hlcursor -separator ' | '
     add-highlighter window/ show-matching
 }
-hook global NormalKey y|d|c %{ nop %sh{ printf %s "$kak_reg_dquote" | pbcopy }}
+# hook global NormalKey y|d|c %{ nop %sh{ printf %s "$kak_reg_dquote" | pbcopy }}
 hook global InsertChar \t %{ exec -draft h@ } # convert tabs to spaces
 
 
 # lsp
-eval %sh{kak-lsp --kakoune -s $kak_session}
-# lsp-enable
+# eval %sh{kak-lsp --kakoune -s $kak_session}
 
 
 # filetypes
 
 ## go
 hook global WinCreate .*\.go %{
-    lsp-enable-window
+    # lsp-enable-window
 
     hook buffer BufWritePre .* format
     hook buffer BufWritePost .* lint
@@ -61,15 +61,15 @@ hook global WinCreate .*\.go %{
     set window formatcmd goimports
     set window makecmd 'go build -x'
 
-    map window user , ':lsp-hover<ret>' -docstring 'show hover'
-    map window user e ':lsp-find-error<ret>:lsp-hover<ret>' -docstring 'find error'
-    map window user E ':lsp-find-error --previous<ret>:lsp-hover<ret>' -docstring 'find error (prev)'
-    map window user f ':lsp-next-function<ret>' -docstring 'next function'
-    map window user F ':lsp-previous-function<ret>' -docstring 'prev function'
-    map window user i ':lsp-incoming-calls<ret>' -docstring 'incoming calls'
-    map window user I ':lsp-outgoing-calls<ret>' -docstring 'outgoing calls'
-    map window user j ':lsp-definition<ret>' -docstring 'go to definition'
-    map window user n ':lsp-rename-prompt<ret>' -docstring 'rename symbol'
+    # map window user , ':lsp-hover<ret>' -docstring 'show hover'
+    # map window user e ':lsp-find-error<ret>:lsp-hover<ret>' -docstring 'find error'
+    # map window user E ':lsp-find-error --previous<ret>:lsp-hover<ret>' -docstring 'find error (prev)'
+    # map window user f ':lsp-next-function<ret>' -docstring 'next function'
+    # map window user F ':lsp-previous-function<ret>' -docstring 'prev function'
+    # map window user i ':lsp-incoming-calls<ret>' -docstring 'incoming calls'
+    # map window user I ':lsp-outgoing-calls<ret>' -docstring 'outgoing calls'
+    # map window user j ':lsp-definition<ret>' -docstring 'go to definition'
+    # map window user n ':lsp-rename-prompt<ret>' -docstring 'rename symbol'
 }
 
 ## shell
